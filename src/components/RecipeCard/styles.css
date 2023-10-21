@@ -54,6 +54,8 @@ body {
 .card .front {
     background: #ffffff;
     padding: 20px;
+    /* font in the center */
+    text-align: center; /* Center text horizontally */
 }
 
 .card .front h3 {
