@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
+import BackgroundPattern from './components/BackgroundPattern/BackgroundPattern';
 import RecipeDashboard from './components/RecipeDashboard/RecipeDashboard';
 
 function App() {
   return (
-    <div className="App">
+    <BackgroundPattern>
       <RecipeDashboard />
-      {/* You can add more <RecipeCard /> components with different props here */}
-    </div>
+    </BackgroundPattern>
   );
 }
 

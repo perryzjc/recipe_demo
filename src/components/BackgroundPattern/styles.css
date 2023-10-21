@@ -1,0 +1,32 @@
+/* Base Styles and Variables */
+:root {
+  --base-color: #925252;
+  --pattern-color: rgba(119, 6, 6, 0.05);
+}
+
+.background-pattern {
+  width: 100vw; /* Ensure full viewport width */
+  height: 100vh; /* Ensure full viewport height */
+  background-color: var(--base-color);
+  font-family: 'Helvetica', sans-serif;
+  overflow: hidden;
+  position: fixed; /* Ensure it's always at the top and spans entire viewport */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place it below other content */
+}
+
+/* Background Pattern */
+.background-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url('https://previews.123rf.com/images/krekdm/krekdm1607/krekdm160700299/61898029-seamless-food-pattern-can-be-used-for-wallpaper-website-background-wrapping-paper-restaurant-bright.jpg'); /* Replace with your pattern image */
+  background-repeat: repeat;
+  background-size: contain;
+  background-color: var(--pattern-color);
+}

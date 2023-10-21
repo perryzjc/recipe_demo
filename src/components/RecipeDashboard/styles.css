@@ -3,10 +3,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Changed to min-height to ensure content doesn't overflow */
-  background-color: #f4f4f4;
+  min-height: 100vh;
+  background-color: #f9f9f9;
   padding-left: 20px;
   padding-right: 20px;
+  background-image: radial-gradient(circle at top right, #ffecd2 0%, #fcb69f 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .card-layout {
