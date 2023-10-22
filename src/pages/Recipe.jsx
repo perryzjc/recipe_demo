@@ -16,7 +16,7 @@ function Recipe() {
   return (
     <div>
       <h2>{selectedRecipe.title} Recipe</h2>
-      <img src={"../" + selectedRecipe.image} alt={`Recipe for id: ${id}`} className="contentImg"/>
+      <img src={selectedRecipe.image} alt={`Recipe for id: ${id}`} className="contentImg"/>
       <p>{selectedRecipe.recipe}</p>
     </div>
   );
