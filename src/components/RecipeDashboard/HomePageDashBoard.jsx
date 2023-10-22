@@ -1,6 +1,7 @@
 import React from "react";
 import "./HomePageDashBoard.css";
 import RecipeCard from "../RecipeCard/RecipeCard";
+import SearchBox from "../SearchBox/SearchBox";
 
 import soupIcon from "../../assets/soup.jpg";
 import mainCourseIcon from "../../assets/maincourse.jpg";
@@ -13,7 +14,7 @@ function HomePageDashboard({}) {
       <div className="card-layout">
 
       <div className="search-box-wrapper">
-          <input
+          <SearchBox
             type="text"
             placeholder="Search for a recipe..."
             className="search-box"
