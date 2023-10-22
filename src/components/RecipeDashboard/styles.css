@@ -3,11 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #f9f9f9;
+  min-height: 70vh;
+  /* background-color: #f9f9f9; */
   padding-left: 20px;
   padding-right: 20px;
-  background-image: radial-gradient(circle at top right, #ffecd2 0%, #fcb69f 100%);
+  /* background-image: radial-gradient(circle at top right, #ffecd2 0%, #fcb69f 100%); */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -18,7 +18,7 @@
 .card-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 20px;
 }
 
 .search-box-wrapper {
