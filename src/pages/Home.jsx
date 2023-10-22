@@ -1,12 +1,12 @@
 import React from "react";
 import BackgroundPattern from "../components/BackgroundPattern/BackgroundPattern";
-import RecipeDashboard from "../components/RecipeDashboard/RecipeDashboard";
+import HomePageDashboard from "../components/RecipeDashboard/HomePageDashBoard";
 
 function Home() {
   return (
     <>
       <BackgroundPattern>
-        <RecipeDashboard />
+        <HomePageDashboard />
       </BackgroundPattern>
     </>
   );

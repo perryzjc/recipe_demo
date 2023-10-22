@@ -1,37 +1,31 @@
 import React from "react";
-
-import { Link } from "react-router-dom";
-import food1 from "../img/food.jpg";
+import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeListsDashBoardTemplate";
+// import soup image
+import SoupPageBackground from "../assets/bg/bg_soup.jpg";
 
 const soups = [
   {
-    id: 5,
-    title: "Soup 1",
-    image: "food1",
+    id: 11,
+    title: "A2",
+    image: "https://www.indianhealthyrecipes.com/wp-content/uploads/2019/06/vegetable-soup-500x375.jpg",
+    description: "Delicious appetizer A2"  // Example description
   },
   {
-    id: 6,
-    title: "Soup 2",
-    image: "../img/food.jpg",
+    id: 11,
+    title: "A2",
+    image: "https://hips.hearstapps.com/hmg-prod/images/chicken-noodle-soup-index-644c2bec1ce0c.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*",
+    description: "Delicious appetizer A2"  // Example description
   },
 ];
 
 const Soup = () => {
     return (
-      <div>
-        <h2>Soup</h2>
-        <p>This is the soup content.</p>
-  
-        {soups.map((soup) => (
-          <div key={soup.id}>
-            <Link to={`/recipe_demo/recipe/${soup.id}`}>
-              <img src={soup.image} alt={"soup.title"} />
-              <h3>{soup.title}</h3>
-            </Link>
-          </div>
-        ))}
-      </div>
+        <RecipeListsDashBoardTemplate
+            recipe_info_list={soups}
+            category="Soup"
+            backgroundImage={SoupPageBackground}
+        />
     );
-  };
-  
-  export default Soup;
+}
+
+export default Soup;

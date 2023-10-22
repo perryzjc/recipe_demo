@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "./HomePageDashBoard.css";
 import RecipeCard from "../RecipeCard/RecipeCard";
 
 import soupIcon from "../../assets/soup.jpg";
