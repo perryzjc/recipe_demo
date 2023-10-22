@@ -1,20 +1,11 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import food1 from "../img/food.jpg";
+import { contents } from "./contents.jsx";
 
-const mainCourses = [
-  {
-    id: 3,
-    title: "MainCourse 1",
-    image: "food1",
-  },
-  {
-    id: 4,
-    title: "MainCourse 2",
-    image: "../img/food.jpg",
-  },
-];
+const category = "MainCourse";
+
+const mainCourses = contents.filter(item => item.category === category);
 
 const MainCourse = () => {
     return (
@@ -25,7 +16,7 @@ const MainCourse = () => {
         {mainCourses.map((mainCourse) => (
           <div key={mainCourse.id}>
             <Link to={`/recipe_demo/recipe/${mainCourse.id}`}>
-              <img src={mainCourse.image} alt={"mainCourse.title"} />
+              <img src={mainCourse.image} alt={"mainCourse.title"}  className="contentImg"/>
               <h3>{mainCourse.title}</h3>
             </Link>
           </div>

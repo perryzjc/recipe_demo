@@ -1,31 +1,22 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import food1 from "../img/food.jpg";
+import { contents } from "./contents.jsx";
 
-const desserts = [
-  {
-    id: 7,
-    title: "Dessert 1",
-    image: food1,
-  },
-  {
-    id: 8,
-    title: "Dessert 2",
-    image: "../img/food.jpg",
-  },
-];
+const category = "Dessert";
+
+const desserts = contents.filter(item => item.category === category);
 
 const Dessert = () => {
     return (
-      <div>
+      <div className="categoryPage">
         <h2>Dessert</h2>
         <p>This is the dessert content.</p>
   
         {desserts.map((dessert) => (
           <div key={dessert.id}>
             <Link to={`/recipe_demo/recipe/${dessert.id}`}>
-              <img src={dessert.image} alt={"dessert.title"} />
+              <img src={dessert.image} alt={"dessert.title"} className="contentImg"/>
               <h3>{dessert.title}</h3>
             </Link>
           </div>
