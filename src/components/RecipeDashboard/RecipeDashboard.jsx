@@ -2,14 +2,14 @@ import React from "react";
 import "./styles.css";
 import RecipeCard from "../RecipeCard/RecipeCard";
 
-import soupIcon from "../../assets/soupIcon.png";
-import mainCourseIcon from "../../assets/mainCourseIcon.png";
-import dessertIcon from "../../assets/dessertIcon.png";
-import appetizerIcon from "../../assets/appetizerIcon.png";
+import soupIcon from "../../assets/soup.jpg";
+import mainCourseIcon from "../../assets/maincourse.jpg";
+import dessertIcon from "../../assets/dessert.png";
+import appetizerIcon from "../../assets/appe.jpg";
 
 function RecipeDashboard({}) {
   return (
-    <div className="container">
+    // <div className="container">
       <div className="card-layout">
 
       <div className="search-box-wrapper">
@@ -42,7 +42,7 @@ function RecipeDashboard({}) {
           img_path={dessertIcon}
         />
       </div>
-    </div>
+    // </div>
   );
 }
 
