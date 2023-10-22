@@ -1,29 +1,65 @@
 import React from "react";
+import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeListsDashBoardTemplate";
 
-import { Link } from "react-router-dom";
-import { contents } from "./Contents.jsx";
-import './Page.css';
-
-const category = "Dessert";
-
-const desserts = contents.filter(item => item.category === category);
+const desserts = [
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 11,
+    title: "A2",
+    image: "https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+]
 
 const Dessert = () => {
     return (
-      <div className="categoryPage">
-        <h2>Dessert</h2>
-        <p>This is the dessert content.</p>
-  
-        {desserts.map((dessert) => (
-          <div key={dessert.id}>
-            <Link to={`/recipe_demo/recipe/${dessert.id}`}>
-              <img src={dessert.image} alt={"dessert.title"} className="contentImg"/>
-              <h3>{dessert.title}</h3>
-            </Link>
-          </div>
-        ))}
-      </div>
+        <RecipeListsDashBoardTemplate
+            recipe_info_list={desserts}
+            category="Dessert"
+            backgroundImage="https://thumbs.dreamstime.com/z/autumn-food-frame-table-scene-selection-pies-appetizers-desserts-top-view-over-rustic-wood-background-copy-space-159176820.jpg"
+        />
     );
-  };
-  
-  export default Dessert;
+}
+
+export default Dessert;

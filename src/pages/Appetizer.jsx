@@ -1,28 +1,52 @@
 import React from "react";
+import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeListsDashBoardTemplate";
 
-import { Link } from "react-router-dom";
-import { contents } from "./Contents.jsx";
-import './Page.css';
-
-const category = "Appetizer";
-
-const appetizers = contents.filter(item => item.category === category);
+const appetizers = [
+  {
+    id: 11,
+    title: "A2",
+    image: "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?cs=srgb&dl=pexels-ella-olsson-1640772.jpg&fm=jpg",
+    description: "Delicious appetizer A2"  // Example description
+  },
+  {
+    id: 12,
+    title: "A 2",
+    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?s=612x612&w=0&k=20&c=v48RE0ZNWpMZOlSp13KdF1yFDmidorO2pZTu2Idmd3M=",
+    description: "Tasty appetizer A2"  // Example description
+  },
+  {
+    id: 12,
+    title: "A 2",
+    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?s=612x612&w=0&k=20&c=v48RE0ZNWpMZOlSp13KdF1yFDmidorO2pZTu2Idmd3M=",
+    description: "Tasty appetizer A2"  // Example description
+  },
+  {
+    id: 12,
+    title: "A 2",
+    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?s=612x612&w=0&k=20&c=v48RE0ZNWpMZOlSp13KdF1yFDmidorO2pZTu2Idmd3M=",
+    description: "Tasty appetizer A2"  // Example description
+  },
+  {
+    id: 12,
+    title: "A 2",
+    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?s=612x612&w=0&k=20&c=v48RE0ZNWpMZOlSp13KdF1yFDmidorO2pZTu2Idmd3M=",
+    description: "Tasty appetizer A2"  // Example description
+  },
+  {
+    id: 12,
+    title: "A 2",
+    image: "https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?s=612x612&w=0&k=20&c=v48RE0ZNWpMZOlSp13KdF1yFDmidorO2pZTu2Idmd3M=",
+    description: "Tasty appetizer A2"  // Example description
+  },
+];
 
 function Appetizer() {
   return (
-  <div className="categoryPage">
-    <h2>Appetizer</h2>
-    <p>This is the a Appetizer content.</p>
-
-    {appetizers.map((appetizer) => (
-      <div key={appetizer.id}>
-        <Link to={`/recipe_demo/recipe/${appetizer.id}`}>
-          <img src={appetizer.image} alt={"appetizer.title"} className="contentImg"/>
-          <h3>{appetizer.title}</h3>
-        </Link>
-      </div>
-    ))}
-  </div>
+    <RecipeListsDashBoardTemplate
+      recipe_info_list={appetizers}
+      category="Appetizer"
+      backgroundImage="https://c8.alamy.com/comp/JNXA82/sauces-appetizers-and-cooking-ingredients-food-frame-background-on-JNXA82.jpg"
+    />
   );
 }
 

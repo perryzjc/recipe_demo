@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "./HomePageDashBoard.css";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import SearchBox from "../SearchBox/SearchBox";
 
@@ -8,7 +8,7 @@ import mainCourseIcon from "../../assets/maincourse.jpg";
 import dessertIcon from "../../assets/dessert.png";
 import appetizerIcon from "../../assets/appe.jpg";
 
-function RecipeDashboard({}) {
+function HomePageDashboard({}) {
   return (
     // <div className="container">
       <div className="card-layout">
@@ -47,4 +47,4 @@ function RecipeDashboard({}) {
   );
 }
 
-export default RecipeDashboard;
+export default HomePageDashboard;

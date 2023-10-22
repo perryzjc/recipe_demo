@@ -21,7 +21,7 @@ function Navbar() {
           {['Appetizer', 'MainCourse', 'Soup', 'Dessert'].map(item => (
             <li className="nav-item" key={item}>
               <motion.div variants={linkVariants} whileHover="hover" whileTap="tap">
-                <Link to={`/recipe_demo/${item.toLowerCase()}`} className="nav-links">{item}</Link>
+                <Link to={`/recipe_demo/${item.toLowerCase().replace(/\s/g, "")}`} className="nav-links">{item}</Link>
               </motion.div>
             </li>
           ))}

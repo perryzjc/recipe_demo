@@ -1,0 +1,46 @@
+.categoryPage {
+  padding: 20px;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center the content horizontally */
+  justify-content: flex-start; /* Align children to the start of the container */
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));
+  background-size: cover; /* Cover the entire viewport */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the background image */
+  width: 100vw;
+  height: 100vh;
+}
+
+h2 {
+  position: absolute;
+  top: 10vh;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #fcfcfc;
+}
+
+.panel {
+  position: absolute;   /* Positioning the panel absolutely */
+  top: 15vh;            /* 10% from the top of the viewport */
+  left: 12vw;           /* 10% from the left side of the viewport */
+  width: 80vw;          /* 80% of the viewport width */
+  max-width: 1200px;    /* Maximum width for large screens */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  margin-top: 20px;
+  overflow-y: auto;     /* Scroll vertically if content overflows */
+  max-height: 90vh;     /* Take up to 90% of the viewport height */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.grid-item {
+  text-decoration: none;
+}
