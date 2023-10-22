@@ -30,7 +30,7 @@ export const contents = [
         id: 4,
         category: "MainCourse",
         title: "MainCourse 2",
-        image: "https://www.foodandwine.com/thmb/20Fp26wbzSMgOtCdCZy0vpIK8Mo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/garlic-butter-prime-rib-FT-RECIPE0621-fca73e5fa8e046b0b03982757db51628.jpg",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOd13nFLnRXoOs9VlsIYJzkaHi5pxs2LWn9Q&usqp=CAU",
         article: "Add anything you want here!",
         recipe: "Recipe for MainCourse 2",
         // can add other field here (EX: steps? (can make a array), author, brabrabra)

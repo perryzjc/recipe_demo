@@ -1,0 +1,120 @@
+.recipe-instruction-page {
+  padding: 20px;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto; /* Allow vertical scroll if content overflows */
+  background-color: rgba(0, 0, 0, 0.6); /* Adding a dark overlay to the background */
+}
+
+.recipe-instruction-page h2 {
+  font-family: 'Cinzel', serif;
+  color: #fcfcfc;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds shadow to the title for readability */
+  margin-bottom: 50px;
+}
+
+.recipe-instruction-container {
+  position: absolute;
+  top: 18vh;
+  /* background: rgba(255, 255, 255, 0.1); */
+  /* backdrop-filter: blur(5px); */
+  /* border-radius: 20px; */
+  padding: 20px;
+  width: 80vw;
+  max-height: 70vh;
+  overflow-y: auto; 
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
+}
+
+.custom-card-grid {
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.3); /* More transparency */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+}
+
+.custom-card-grid:hover {
+  transform: scale(1.05); /* Zoom out effect on hover */
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+.step-column {
+  background: linear-gradient(145deg, rgba(43, 124, 217, 0.8), rgba(62, 170, 247, 0.8)); /* Gradient with transparency */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px 0 0 15px;
+}
+
+.step-content {
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Shadow for better readability */
+}
+
+.instruction-column {
+  background-color: rgba(236, 240, 241, 0.6); /* Slightly transparent background */
+  border-left: 3px solid #3498db; /* Aesthetic blue border on the left */
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 0 15px 15px 0;
+}
+
+.recipe-instruction-page {
+  color: #fff;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.recipe-name {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.recipe-instruction-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-content {
+  flex: 0 0 100px; /* Do not grow, do not shrink, width of 100px */
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
+  padding: 10px;
+  text-align: center;
+}
+
+.instruction-row {
+  display: inline-flex;
+  margin-bottom: 20px; /* Adjust as needed */
+  align-items: center; /* Vertically center align content */
+  overflow: auto; /* Make content scrollable if too long */
+  border-radius: 10px;
+}
+
+.instruction-content {
+  flex: 0 0 auto;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.instruction-row:hover {
+  scale: 1.05;
+}
