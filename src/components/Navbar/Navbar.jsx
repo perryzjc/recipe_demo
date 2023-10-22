@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Navbar.css';
-import recipeIcon from '../assets/logo.png';
+import recipeIcon from '../../assets/logo.png';
 
 function Navbar() {
   const linkVariants = {
