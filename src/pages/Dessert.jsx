@@ -1,7 +1,11 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import { contents } from "./Contents.jsx";
+=======
+import { contents } from "./contents.jsx";
+>>>>>>> aea1bce181297564ee7344880701e5e68cc54946
 
 const category = "Dessert";
 
