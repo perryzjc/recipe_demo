@@ -2,6 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import { contents } from "./Contents.jsx";
+import './Page.css';
 
 const category = "Dessert";
 
