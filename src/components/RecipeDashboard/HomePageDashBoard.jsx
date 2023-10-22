@@ -7,7 +7,7 @@ import mainCourseIcon from "../../assets/maincourse.jpg";
 import dessertIcon from "../../assets/dessert.png";
 import appetizerIcon from "../../assets/appe.jpg";
 
-function RecipeDashboard({}) {
+function HomePageDashboard({}) {
   return (
     // <div className="container">
       <div className="card-layout">
@@ -46,4 +46,4 @@ function RecipeDashboard({}) {
   );
 }
 
-export default RecipeDashboard;
+export default HomePageDashboard;
