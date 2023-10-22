@@ -1,5 +1,4 @@
-Base Styles and Variables
-:root {
+Base Styles and Variables :root {
   --base-color: #925252;
   --pattern-color: rgba(119, 6, 6, 0.05);
 }
@@ -8,26 +7,29 @@ Base Styles and Variables
   width: 100vw; /* Ensure full viewport width */
   height: 100vh; /* Ensure full viewport height */
   background-color: var(--base-color);
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
   overflow: hidden;
   position: fixed; /* Ensure it's always at the top and spans entire viewport */
   top: 0;
   left: 0;
-  z-index: -1; /* Place it below other content */
+  z-index: -1;
 }
 
 /* Background Pattern */
 .background-pattern::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: -1;
-  background-image: url('../../assets/main_background.png'); /* Replace with your pattern image */
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+    url(../../assets/main_background.png);
   background-size: cover; /* Ensure the background covers the whole element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-color: var(--pattern-color); /* Background color if the image is not covering the whole area */
+  background-color: var(
+    --pattern-color
+  ); /* Background color if the image is not covering the whole area */
 }
