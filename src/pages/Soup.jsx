@@ -4,7 +4,7 @@ import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeLi
 import { contents } from "./Contents";
 
 // import soup image
-import SoupPageBackground from "../assets/bg/bg_soup.jpg";
+import SoupPageBackground from "/assets/bg/bg_soup.jpg";
 
 const category = "Soup";
 

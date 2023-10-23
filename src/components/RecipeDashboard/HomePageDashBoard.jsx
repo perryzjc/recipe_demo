@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import SearchBox from "../SearchBox/SearchBox";
 
-import soupIcon from "../../assets/soup.jpg";
-import mainCourseIcon from "../../assets/maincourse.jpg";
-import dessertIcon from "../../assets/dessert.png";
-import appetizerIcon from "../../assets/appe.jpg";
+import soupIcon from "/assets/soup.jpg";
+import mainCourseIcon from "/assets/maincourse.jpg";
+import dessertIcon from "/assets/dessert.png";
+import appetizerIcon from "/assets/appe.jpg";
 
 function HomePageDashboard() {
   return (
