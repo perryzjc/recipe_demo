@@ -33,7 +33,7 @@ function Recipe() {
   return (
     <RecipeInstruction
         recipeName={selectedRecipe.title}
-        recipeImage={selectedRecipe.image}
+        recipeImage={`../${selectedRecipe.imagePath}`}
         instructions={instructions}
     />
 );
