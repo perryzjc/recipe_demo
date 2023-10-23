@@ -18,7 +18,7 @@ function Navbar() {
           Recepi Blog
         </Link>
         <ul className="navbar-list">
-          {['Appetizer', 'MainCourse', 'Soup', 'Dessert'].map(item => (
+          {['Appetizer', 'Main Course', 'Soup', 'Dessert'].map(item => (
             <li className="nav-item" key={item}>
               <motion.div variants={linkVariants} whileHover="hover" whileTap="tap">
                 <Link to={`/${item.toLowerCase().replace(/\s/g, "")}`} className="nav-links">{item}</Link>

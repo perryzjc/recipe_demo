@@ -1,39 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-
 .navbar {
   background-color: rgba(46, 46, 46, 0.2);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   padding: 0 20px;
   top: 0;
-  left: 23.8%; /* This ensures the navbar is centered */
-  width: 50%; /* Navbar width is 50% of the website width */
+  left: 10%; /* This ensures the navbar is centered */
+  width: 80%; /* Navbar width is 50% of the website width */
   z-index: 1000;
   position: fixed;
+  border-radius: 15px;
 }
 
-.navbar::before {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 50%;
-  height: 20px;
-  border-bottom-left-radius: 50% 20px;
-  background: inherit;
-}
-
-.navbar::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  right: 0;
-  width: 50%;
-  height: 20px;
-  border-bottom-right-radius: 50% 20px;
-  background: inherit;
-}
 
 .navbar-container {
   max-width: 1200px;
@@ -48,7 +27,7 @@
 .navbar-title {
   font-family: 'Pacifico', cursive;
   font-size: 2em;
-  color: #ffffff;
+  color: rgb(237, 231, 231);
   text-decoration: none;
   font-weight: bold;
   display: flex;
@@ -73,11 +52,13 @@
   margin-right: 20px;
   border-radius: 12px;
   overflow: hidden;
+  font-size: 25px;
 }
 
 .nav-links {
   text-decoration: none;
-  color: #ffffff;
+  font-family: 'Pacifico', cursive;
+  color: rgb(246, 239, 239);
   font-size: 1em;
   transition: all 0.3s;
   font-weight: 500;
