@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router-dom';
 const items = contents.map(item => ({
   id: item.id,
   name: item.title,
-  image: item.imagePath
+  image: item.imagePath,
+  category: item.category
 }));
 
 function SearchBox() {
@@ -41,7 +42,14 @@ function SearchBox() {
       <>
         <span className='search-result'>
           <img src={`/recipe_demo` + item.image} alt="Recipe" width="100" height="100"/>
-          {item.name}
+          <div className='search-content'>
+            <div className='search-content-category'>
+              {item.category}
+            </div>
+            <div>
+              {item.name}
+            </div>
+          </div>
         </span>
       </>
     )
