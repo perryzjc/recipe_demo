@@ -5,8 +5,7 @@
   flex-direction: column;
   align-items: center;  /* Center the content horizontally */
   justify-content: flex-start; /* Align children to the start of the container */
-  background-color: rgb(255, 236, 202);
-  /* background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)); */
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));
   background-size: cover; /* Cover the entire viewport */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Do not repeat the background image */
@@ -19,7 +18,7 @@ h2 {
   top: 10vh;
   font-size: 2em;
   margin-bottom: 10px;
-  color: black;
+  color: #fcfcfc;
 }
 
 .panel {

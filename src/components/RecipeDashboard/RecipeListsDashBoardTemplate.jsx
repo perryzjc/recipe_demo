@@ -5,7 +5,7 @@ import "./RecipeListsDashBoardTemplate.css";
 
 function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundImage }) {
   const backgroundStyle = {
-    // backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${backgroundImage})`
+    backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${backgroundImage})`
   };
 
   console.log(recipe_info_list);
