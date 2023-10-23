@@ -27,7 +27,7 @@
 .navbar-title {
   font-family: 'Pacifico', cursive;
   font-size: 2em;
-  color: black;
+  color: rgb(237, 231, 231);
   text-decoration: none;
   font-weight: bold;
   display: flex;
@@ -58,7 +58,7 @@
 .nav-links {
   text-decoration: none;
   font-family: 'Pacifico', cursive;
-  color: black;
+  color: rgb(246, 239, 239);
   font-size: 1em;
   transition: all 0.3s;
   font-weight: 500;
