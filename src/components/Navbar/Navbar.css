@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .navbar {
-  background-color: rgba(46, 46, 46, 0.2);
+  background-color: rgba(255, 177, 88, 0.579);
   backdrop-filter: blur(10px);
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   padding: 0 20px;
