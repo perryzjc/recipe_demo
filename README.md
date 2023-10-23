@@ -1,8 +1,10 @@
 # Recipe Demo
 
-A simple recipe app built with React and Vite.
+> A sleek and immersive recipe app built with React and Vite, highlighting a clean and user-centric design.
 
-**New Feature**: This repository is equipped with a GitHub Action that automatically deploys to GitHub Pages whenever there's a push or pull request made to `main` or any branch with a pattern `feature/*`.
+![Recipe Demo GIF](.github/assets/demo.gif)
+
+[Live Demo](https://perryzjc.github.io/recipe_demo/) - Check out Recipe Demo live in action!
 
 ## Table of Contents
 - [Installation](#installation)
