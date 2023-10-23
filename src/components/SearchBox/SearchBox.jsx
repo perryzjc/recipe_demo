@@ -28,7 +28,7 @@ function SearchBox() {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item)
-    navigateTo(`/recipe_demo/recipe/${item.id}`);
+    navigateTo(`/recipe/${item.id}`);
   }
   
   const handleOnFocus = () => {
@@ -40,7 +40,7 @@ function SearchBox() {
     return (
       <>
         <span className='search-result'>
-          <img src={item.image} alt="Recipe" width="100" height="100"/>
+          <img src={`/recipe_demo` + item.image} alt="Recipe" width="100" height="100"/>
           {item.name}
         </span>
       </>
