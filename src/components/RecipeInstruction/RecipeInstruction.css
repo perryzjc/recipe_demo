@@ -100,22 +100,23 @@
 }
 
 .instruction-row {
-  display: inline-flex;
-  margin-bottom: 20px; /* Adjust as needed */
-  align-items: center; /* Vertically center align content */
-  overflow: auto; /* Make content scrollable if too long */
+  display: flex;
+  margin-bottom: 20px; 
+  align-items: center; 
+  overflow: auto; 
   border-radius: 10px;
+  max-width: 100%; /* Adjust as needed */
 }
 
 .instruction-content {
-  flex: 0 0 auto;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.3);
-  overflow: hidden; /* Hide overflow content */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: inline-block; /* Makes the div inline level but maintains block features */
 }
 
 .instruction-row:hover {
   scale: 1.05;
 }
-
