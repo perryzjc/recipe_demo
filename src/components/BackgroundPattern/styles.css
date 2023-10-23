@@ -25,7 +25,7 @@ Base Styles and Variables :root {
   bottom: 0;
   z-index: -1;
   background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
-    url(../../assets/main_background.png);
+    url(/assets/main_background.png);
   background-size: cover; /* Ensure the background covers the whole element */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent the image from repeating */
