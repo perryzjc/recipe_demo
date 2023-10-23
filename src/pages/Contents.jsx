@@ -5,7 +5,8 @@ export const contents = [
     {
         id: 1,
         category: "Appetizer",
-        articleTitle: "Ham ‘n’ Cheese Biscuit Stacks",
+        title: "Ham ‘n’ Cheese Biscuit Stacks",
+        articleTitle: "Hearty Ham 'n' Cheese Biscuit Stacks: Perfect for Any Occasion",
         imagePath: "src/assets/recipe/HamCheeseBiscuitStacks.jpg",
         author: "Kelly Williams",
         datePublished: "Sep. 07, 2022",
@@ -43,7 +44,8 @@ export const contents = [
     {
         id: 2,
         category: "Appetizer",
-        articleTitle: "Sweet Gingered Chicken Wings",
+        title: "Sweet Gingered Chicken Wings",
+        articleTitle: "Delectable Sweet Gingered Chicken Wings: A Honey-Infused Delight",
         imagePath: "src/assets/recipe/SweetGingeredChickenWings.png",
         author: "Debbie Dougal",
         datePublished: "Sep. 24, 2022",
@@ -80,7 +82,8 @@ export const contents = [
     {
         id: 3,
         category: "MainCourse",
-        articleTitle: "Cast-Iron Skillet Steak",
+        title: "Cast-Iron Skillet Steak",
+        articleTitle: "Easy Weeknight Dining: Cast-Iron Skillet Steak Made Simple",
         imagePath: "src/assets/recipe/CastIronSkilletSteak.png",
         author: "James Schend, Dairy Freed",
         datePublished: "Oct. 21, 2023",
@@ -107,7 +110,8 @@ export const contents = [
     {
         id: 4,
         category: "MainCourse",
-        articleTitle: "Pesto Lasagna",
+        title: "Pesto Lasagna",
+        articleTitle: "Basil Bliss: Pesto Lasagna with Cheesy Goodness",
         imagePath: "src/assets/recipe/PestoLasagna.png",
         author: "Taste of Home Test Kitchen",
         datePublished: "Sep. 13, 2023",
@@ -143,7 +147,8 @@ export const contents = [
     {
         id: 5,
         category: "Soup",
-        articleTitle: "Slow-Cooker Butternut Squash Soup",
+        title: "Slow-Cooker Butternut Squash Soup",
+        articleTitle: "Savory Comfort in a Bowl: Slow-Cooker Butternut Squash Soup",
         imagePath: "src/assets/recipe/SlowCookerButternutSquashSoup.png",
         author: "Jennifer Machado",
         datePublished: "Jun. 27, 2023",
@@ -172,7 +177,8 @@ export const contents = [
     {
         id: 6,
         category: "Soup",
-        articleTitle: "Satisfying Tomato Soup",
+        title: "Satisfying Tomato Soup",
+        articleTitle: "Homemade Comfort: Satisfying Tomato Soup with a Chunky Twist",
         imagePath: "src/assets/recipe/SatisfyingTomatoSoup.png",
         author: "Marian Brown",
         datePublished: "Oct. 05, 2023",
@@ -204,7 +210,8 @@ export const contents = [
     {
         id: 7,
         category: "Dessert",
-        articleTitle: "No-Bake Cappuccino Dessert",
+        title: "No-Bake Cappuccino Dessert",
+        articleTitle: "Cool and Decadent: No-Bake Cappuccino Dessert for Summer Delights",
         imagePath: "src/assets/recipe/NoBakeCappuccinoDessert.png",
         author: "Mary Beth Desens",
         datePublished: "Jun. 27, 2023",
@@ -235,7 +242,8 @@ export const contents = [
     {
         id: 8,
         category: "Dessert",
-        articleTitle: "Quick and Easy Tiramisu",
+        title: "Quick and Easy Tiramisu",
+        articleTitle: "Irresistible Indulgence: Quick and Easy Tiramisu for Effortless Desserts",
         imagePath: "src/assets/recipe/QuickandEasyTiramisu.png",
         author: "Taste of Home Test Kitchen",
         datePublished: "Sep. 13, 2023",
