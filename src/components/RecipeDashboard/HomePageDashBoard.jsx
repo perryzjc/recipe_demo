@@ -21,7 +21,7 @@ function HomePageDashboard() {
         />
       </div>
       
-      <Link to="/recipe_demo/appetizer" className="card-link">
+      <Link to="/appetizer" className="card-link">
         <RecipeCard
           title="Appetizer"
           description="I love Appetizer"
@@ -29,7 +29,7 @@ function HomePageDashboard() {
         />
       </Link>
       
-      <Link to="/recipe_demo/maincourse" className="card-link">
+      <Link to="/maincourse" className="card-link">
         <RecipeCard
           title="Main Course"
           description="I love Main Course"
@@ -37,7 +37,7 @@ function HomePageDashboard() {
         />
       </Link>
       
-      <Link to="/recipe_demo/soup" className="card-link">
+      <Link to="/soup" className="card-link">
         <RecipeCard
           title="Soup"
           description="I love Soup"
@@ -45,7 +45,7 @@ function HomePageDashboard() {
         />
       </Link>
       
-      <Link to="/recipe_demo/dessert" className="card-link">
+      <Link to="/dessert" className="card-link">
         <RecipeCard
           title="Dessert"
           description="I love Dessert"
