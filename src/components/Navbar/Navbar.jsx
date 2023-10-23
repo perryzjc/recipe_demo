@@ -13,7 +13,7 @@ function Navbar() {
   return (
     <motion.nav className="navbar" initial={{ y: -250 }} animate={{ y: 0 }} transition={{ type: 'spring', stiffness: 120, damping: 20 }}>
       <div className="navbar-container">
-        <Link to="/recipe_demo/" className="navbar-title">
+        <Link to="/." className="navbar-title">
         <img src={recipeIcon} alt="Recipe" className="navbar-icon" />
           Recepi Blog
         </Link>
@@ -21,7 +21,7 @@ function Navbar() {
           {['Appetizer', 'MainCourse', 'Soup', 'Dessert'].map(item => (
             <li className="nav-item" key={item}>
               <motion.div variants={linkVariants} whileHover="hover" whileTap="tap">
-                <Link to={`/recipe_demo/${item.toLowerCase().replace(/\s/g, "")}`} className="nav-links">{item}</Link>
+                <Link to={`/${item.toLowerCase().replace(/\s/g, "")}`} className="nav-links">{item}</Link>
               </motion.div>
             </li>
           ))}

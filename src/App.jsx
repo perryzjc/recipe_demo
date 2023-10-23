@@ -12,16 +12,16 @@ import Recipe from "./pages/Recipe";
 function App() {
   return (
     <>
-      <Router>
+      <Router basename="/recipe_demo">
         <div>
           <Navbar />
           <Routes>
-            <Route path="/recipe_demo/" exact element={<Home />} />
-            <Route path="/recipe_demo/appetizer" element={<Appetizer />} />
-            <Route path="/recipe_demo/maincourse" element={<MainCourse />} />
-            <Route path="/recipe_demo/soup" element={<Soup />} />
-            <Route path="/recipe_demo/dessert" element={<Dessert />} />
-            <Route path="/recipe_demo/recipe/:id" element={<Recipe />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/appetizer" element={<Appetizer />} />
+            <Route path="/maincourse" element={<MainCourse />} />
+            <Route path="/soup" element={<Soup />} />
+            <Route path="/dessert" element={<Dessert />} />
+            <Route path="/recipe/:id" element={<Recipe />} />
           </Routes>
         </div>
       </Router>

@@ -1,5 +1,6 @@
 {
   "name": "vite-project",
+  "homepage": "https://perryzjc.github.io/recipe_demo/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
