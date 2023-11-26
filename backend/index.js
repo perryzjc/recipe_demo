@@ -1,10 +1,14 @@
 const express = require('express');
+const cors = require('cors') 
 //const connectDB = require('./config/db');
 
 // Connect to the database
 //connectDB();
 
 const app = express();
+
+// CORS
+app.use(cors())
 
 // Middlewares
 app.use(express.json()); // For parsing application/json
@@ -21,6 +25,6 @@ app.use('/api/users', userRoutes);
 const { errorHandler } = require('./middleware/errorHandler');
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
