@@ -7,6 +7,10 @@ import { getData } from "../pages/Contents"
 const category = "Appetizer";
  
 const appetizers = getData().filter(item => item.category === category);
+console.log("i am original data")
+console.log(getData())
+console.log("Appppppppppetier")
+console.log(appetizers)
 
 function Appetizer() {
   return (

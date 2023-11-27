@@ -8,6 +8,7 @@ function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundIm
     backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${backgroundImage})`
   };
 
+  console.log("something is here")
   console.log(recipe_info_list);
 
   return (
@@ -20,7 +21,7 @@ function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundIm
               <RecipeCard
                 title={recipe_info.title}
                 description={recipe_info.description}
-                img_path={`/recipe_demo/${recipe_info.imagePath}`}
+                img_path={recipe_info.imageData}
               />
             </Link>
           ))}

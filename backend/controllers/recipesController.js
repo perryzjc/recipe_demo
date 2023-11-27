@@ -1,5 +1,19 @@
 const Recipe = require('../models/Recipe'); 
-const contents = require("./mockContents").contents;
+const contents = require('../controllers/mockContents')
+// const contents = [
+//   {
+//       id: 1,
+//       category: "Appetizer",
+//       title: "Ham ‘n’ Cheese Biscuit Stacks",
+//       author: "Kelly Williams",  
+//       instructions: [
+//           "Step1. Preheat oven to 400°. Cut biscuits in half to make half-circles; place 2 in. apart on ungreased baking sheets. Spread mustard over tops. Bake until golden brown, 8-10 minutes. Cool completely on wire racks.",
+//           "Step2. Mix butter and green onions. In another bowl, mix mustard, mayonnaise and honey. Split each biscuit into 2 layers.",
+//           "Step3. Spread biscuit bottoms with butter mixture; top with ham, cheese, romaine and biscuit tops. Spoon mustard mixture over tops. Thread 1 olive onto each toothpick; insert into stacks. Serve immediately."
+//       ],
+//       // recipe: "Recipe for Appetizer 1",
+//   }
+// ];
 //const client = require('../config/db'); 
 
 
@@ -31,16 +45,17 @@ const contents = require("./mockContents").contents;
 //     createRecipe
 //   };
 
-
+//const contents = require("./mockContents.js").contents;
 const client = require('../config/db'); // Import the MongoDB client
 
 const getRecipes = async (req, res) => {
   console.log("Test get in");
     try {
-        const db = client.db("RecipeBlog"); 
+        /**const db = client.db("RecipeBlog"); 
         const recipes = await db.collection("recipes").find({}).toArray();
-        res.status(200).json(recipes);
-        //res.status(200).json(contents);
+        res.status(200).json(recipes);*/
+        console.log(contents["contents"])
+        res.status(200).json(contents);
     } catch (error) {
         console.error("Failed to retrieve recipes:", error);
         res.status(500).send("Error retrieving recipes");

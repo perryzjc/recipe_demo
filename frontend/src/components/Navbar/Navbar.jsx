@@ -4,7 +4,17 @@ import { motion } from 'framer-motion';
 import './Navbar.css';
 import recipeIcon from '/assets/logo.png';
 
+import { loadData } from '../../pages/Contents'
+
+
+
 function Navbar() {
+  loadData().then(() => {
+    console.log('Data loaded successfully');
+    // Now you can start your application or perform other operations
+  });
+  
+  
   const linkVariants = {
     hover: { scale: 1.05, originX: 0, color: "#ffffff" },
     tap: { scale: 0.95 }

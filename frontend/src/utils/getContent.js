@@ -9,8 +9,10 @@ function getContents() {
         return response.json();
     })
     .then(jsonData => {
+        console.log("test123123123123123123123")
+        console.log(jsonData["contents"])
         // Transform the data to match the structure in contents.jsx
-        const transformedData = jsonData.map(item => {
+        const transformedData = jsonData["contents"].map(item => {
             return {
                 id: item.id,
                 category: item.category,
@@ -33,8 +35,8 @@ function getContents() {
 }
 
 // Usage of getContents, handling the returned Promise:
-// getContents()
-//     .then(contents => console.log(contents))
-//     .catch(error => console.error(error));
+getContents()
+    .then(contents => console.log(contents))
+    .catch(error => console.error(error));
 
 export default getContents;

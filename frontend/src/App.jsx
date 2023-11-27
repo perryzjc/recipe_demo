@@ -8,13 +8,6 @@ import MainCourse from "./pages/MainCourse";
 import Soup from "./pages/Soup";
 import Dessert from "./pages/Dessert";
 import Recipe from "./pages/Recipe";
-import { loadData } from './pages/Contents'
-
-loadData().then(() => {
-  console.log('Data loaded successfully');
-  // Now you can start your application or perform other operations
-});
-
 import RecipeUploadForm from './components/RecipeUpload';
 
 function App() {
