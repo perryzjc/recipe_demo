@@ -1,9 +1,6 @@
 {
   "dependencies": {
-<<<<<<< HEAD
-    "mongodb": "^6.3.0"
-=======
+    "mongodb": "^6.3.0",
     "axios": "^1.6.2"
->>>>>>> 76da27b930fb57340b26068ab429889d2ee833c3
   }
 }
