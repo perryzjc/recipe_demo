@@ -1,11 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { contents } from "./Contents.jsx";
+// import { contents } from "./Contents.jsx";
+import { getData } from "../pages/Contents"
 import './Page.css';
 import RecipeInstruction from "../components/RecipeInstruction/RecipeInstruction.jsx";
 
 
-const recipes = contents
+const recipes = getData()
 
 
 function Recipe() {
