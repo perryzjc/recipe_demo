@@ -1,5 +1,5 @@
 function getContents() {
-    return fetch("http://10.40.134.55:3000/api/recipes", {
+    return fetch("http://localhost:3000/api/recipes", {
         method: "get"
     })
     .then(response => {

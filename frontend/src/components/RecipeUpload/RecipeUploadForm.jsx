@@ -34,7 +34,7 @@ function RecipeUploadForm() {
         formData.append('image', image);
 
         try {
-            const response = await fetch('http://10.40.134.55:3000/api/recipes', {
+            const response = await fetch('http://localhost:3000/api/recipes', {
                 method: 'POST',
                 body: formData // No headers here as browser will set the correct 'Content-Type' for FormData
             });

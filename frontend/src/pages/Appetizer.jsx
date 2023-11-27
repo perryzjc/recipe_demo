@@ -1,18 +1,12 @@
 import React from "react";
 import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeListsDashBoardTemplate";
 
-// import { contents } from "./Contents";
-import { getData } from "../pages/Contents"
-
 const category = "Appetizer";
- 
-const appetizers = getData().filter(item => item.category === category);
-console.log("i am original data")
-console.log(getData())
-console.log("Appppppppppetier")
-console.log(appetizers)
 
-function Appetizer() {
+function Appetizer(contents) {
+  console.log("i am appetizer 12345678901011121314151617181920")
+  console.log(contents)
+  const appetizers = contents["contents"].filter(item => item.category === category);
   return (
     <RecipeListsDashBoardTemplate
       recipe_info_list={appetizers}
