@@ -1,17 +1,11 @@
 const express = require("express");
 const cors = require('cors') 
-const {connectDB, getDb } = require("./config/db");
-
-// Connect to the database
-let db;
-connectDB((err) => {
-  if (!err) {
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-    db = getDb();
-  }
-});
+const client = require('./config/db');
 
 const app = express();
+
+// Connect db
+client.connect();
 
 // CORS
 app.use(cors())
@@ -32,5 +26,8 @@ const { errorHandler } = require("./middleware/errorHandler");
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
+
+client.db("admin").command({ ping: 1 });
+console.log("Pinged your deployment. You successfully connected to MongoDB!");
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

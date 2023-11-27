@@ -1,6 +1,5 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri =
-  "mongodb+srv://dbUser:mypassword@lavy.hj9uxmn.mongodb.net/?retryWrites=true&w=majority";
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://decal:decal_12345678@cluster0.iz3faux.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -8,58 +7,8 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  },
+  }
 });
 
-let dbConnection;
-
-module.exports = {
-  connectDB: (cb) => {
-    MongoClient.connect("mongodb://localhost:27017/RecipeBlog")
-      .then((client) => {
-        dbConnection: client.db();
-        return cb();
-      })
-      .catch((err) => {
-        console.log(err);
-        return cb(err);
-      });
-  },
-  getDb: () => dbConnection,
-};
-
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
-
-// const mongoose = require('mongoose');
-
-// const connectDB = async () => {
-//     try {
-//         const conn = await mongoose.connect(process.env.MONGO_URI, {
-//             useNewUrlParser: true,
-//             useUnifiedTopology: true,
-//             useCreateIndex: true,
-//             useFindAndModify: false,
-//         });
-
-//         console.log(`MongoDB Connected: ${conn.connection.host}`);
-//     } catch (error) {
-//         console.error(`Error: ${error.message}`);
-//         process.exit(1); // Exit process with failure
-//     }
-// };
-
-// module.exports = connectDB;
+// Export the client
+module.exports = client;

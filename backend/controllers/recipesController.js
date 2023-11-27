@@ -1,32 +1,70 @@
 const Recipe = require('../models/Recipe'); 
 const contents = require("./mockContents").contents;
+//const client = require('../config/db'); 
 
 
-// Controller functions
-const getRecipes = async(req, res) => {
-    // Implement logic to retrieve recipes from the database
-    // Use the 'res' object to send the response
-    // Create Mock Response
-    res.status(200).json(contents);
-  };
+// // Controller functions
+// const getRecipes = async(req, res) => {
+//     // Implement logic to retrieve recipes from the database
+//     // Use the 'res' object to send the response
+//     // Create Mock Response
+//     res.status(200).json(contents);
+//   };
     
-    // res.send('TEST getRecipes');
-  // };
+//     // res.send('TEST getRecipes');
+//   // };
   
-  const createRecipe = (req, res) => {
-    // Implement logic to create a new recipe in the database
-    // Use the 'res' object to send the response
-    const recipeData = req.body;
-    console.log("Received recipe data:", recipeData);
-    // Implement logic to create a new recipe in the database using 'recipeData'
-    // This is where you would typically interact with your database
+//   const createRecipe = (req, res) => {
+//     // Implement logic to create a new recipe in the database
+//     // Use the 'res' object to send the response
+//     const recipeData = req.body;
+//     console.log("Received recipe data:", recipeData);
+//     // Implement logic to create a new recipe in the database using 'recipeData'
+//     // This is where you would typically interact with your database
 
-    // Send the same JSON back as the response
-    res.json({ isSuccess: true });
-  };
+//     // Send the same JSON back as the response
+//     res.json({ isSuccess: true });
+//   };
   
-  module.exports = {
+//   module.exports = {
+//     getRecipes,
+//     createRecipe
+//   };
+
+
+const client = require('../config/db'); // Import the MongoDB client
+
+const getRecipes = async (req, res) => {
+  console.log("Test get in");
+    try {
+        const db = client.db("RecipeBlog"); 
+        const recipes = await db.collection("recipes").find({}).toArray();
+        res.status(200).json(recipes);
+        //res.status(200).json(contents);
+    } catch (error) {
+        console.error("Failed to retrieve recipes:", error);
+        res.status(500).send("Error retrieving recipes");
+    }
+};
+
+const createRecipe = async (req, res) => {
+    try {
+        const recipeData = req.body;
+        //console.log(req);
+        console.log("Received recipe data:", recipeData);
+
+        /**const db = client.db("RecipeBlog"); 
+        const result = await db.collection("recipes").insertOne(recipeData);
+        
+        res.status(201).json({ isSuccess: true, insertedId: result.insertedId });*/
+        res.status(201).json({ isSuccess: true, insertedId: 999999999 });
+    } catch (error) {
+        console.error("Failed to create recipe:", error);
+        res.status(500).send("Error creating recipe");
+    } 
+};
+
+module.exports = {
     getRecipes,
     createRecipe
-  };
-  
+};
