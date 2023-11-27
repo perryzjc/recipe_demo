@@ -13,5 +13,5 @@ exports.getByGmail = async (req, res) => {
     const email = reqData["email"]
     // Handle POST logic, including updating `hasPosted` to `true`
     
-    res.json({ is_allow: false });
+    res.json({ isAllow: false });
 };
