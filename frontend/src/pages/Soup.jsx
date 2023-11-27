@@ -1,14 +1,15 @@
 import React from "react";
 import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeListsDashBoardTemplate";
 
-import { contents } from "./Contents";
+// import { contents } from "./Contents";
+import { getData } from "../pages/Contents"
 
 // import soup image
 import SoupPageBackground from "/assets/bg/bg_soup.jpg";
 
 const category = "Soup";
 
-const soups = contents.filter(item => item.category === category);
+const soups = getData().filter(item => item.category === category);
 
 
 const Soup = () => {

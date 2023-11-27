@@ -50,14 +50,17 @@ const getRecipes = async (req, res) => {
 const createRecipe = async (req, res) => {
     try {
         const recipeData = req.body;
-        //console.log(req);
+        console.log(req.file);
         console.log("Received recipe data:", recipeData);
+
+        const base64String = req.file.buffer.toString('base64');
+        console.log(base64String);
 
         /**const db = client.db("RecipeBlog"); 
         const result = await db.collection("recipes").insertOne(recipeData);
         
         res.status(201).json({ isSuccess: true, insertedId: result.insertedId });*/
-        res.status(201).json({ isSuccess: true, insertedId: 999999999 });
+        res.status(201).json({ image: base64String, isSuccess: true, insertedId: 999999999 });
     } catch (error) {
         console.error("Failed to create recipe:", error);
         res.status(500).send("Error creating recipe");

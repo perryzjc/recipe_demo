@@ -2,10 +2,12 @@ import React from 'react';
 import './styles.css';
 
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import { contents } from "../../pages/Contents";
+// import { contents } from "../../pages/Contents";
 import { useNavigate } from 'react-router-dom';
+import { getData } from "../../pages/Contents"
 
-const items = contents.map(item => ({
+
+const items = getData().map(item => ({
   id: item.id,
   name: item.title,
   image: item.imagePath,
