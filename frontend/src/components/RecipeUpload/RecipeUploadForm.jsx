@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios
 import './RecipeUploadForm.css';
 
 function RecipeUploadForm() {
@@ -7,10 +6,15 @@ function RecipeUploadForm() {
     const [title, setTitle] = useState('');
     const [instructions, setInstructions] = useState('');
     const [image, setImage] = useState(null);
+    const maxFileSize = 20 * 1024 * 1024; // 20 MB
 
     function handleFileChange(e) {
         const file = e.target.files[0];
         if (file) {
+            if (file.size > maxFileSize) {
+                alert("File size exceeds 20MB");
+                return;
+            }
             setImage(file);
         }
     }
@@ -23,43 +27,27 @@ function RecipeUploadForm() {
             return;
         }
 
-        const instructionsList = instructions.split('\n')
-            .map(line => line.trim())
-            .filter(line => line);
+        const formData = new FormData();
+        formData.append('user_email', userEmail);
+        formData.append('title', title);
+        formData.append('instructions', instructions);
+        formData.append('image', image);
 
-        const reader = new FileReader();
-        reader.readAsDataURL(image);
+        try {
+            const response = await fetch('http://10.40.134.55:3000/api/recipes', {
+                method: 'POST',
+                body: formData // No headers here as browser will set the correct 'Content-Type' for FormData
+            });
 
-        reader.onload = async () => {
-            const base64Image = reader.result;
-            if (typeof base64Image !== 'string') {
-                console.error('FileReader result is not a string');
-                return;
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const data = {
-                user_email: userEmail,
-                title: title,
-                instructions: instructionsList,
-                image: base64Image
-            };
-
-            try {
-                const response = await axios.post('http://10.40.134.55:3000/api/recipes', data, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                });
-
-                console.log('Upload successful', response.data);
-            } catch (error) {
-                console.error('There was a problem with the axios request:', error);
-            }
-        };
-
-        reader.onerror = () => {
-            console.error('Error occurred reading the file:', reader.error);
-        };
+            const responseData = await response.json();
+            console.log('Upload successful', responseData);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
     }
 
     return (
@@ -67,7 +55,7 @@ function RecipeUploadForm() {
             <div className="upload-label">Import Your Recipe</div>
             <div className="upload-btn-wrapper">
                 <button>Upload Image</button>
-                <input type="file" name="myfile" onChange={handleFileChange} />
+                <input type="file" name="myfile" onChange={handleFileChange}/>
             </div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="user-email">User Email:</label>
