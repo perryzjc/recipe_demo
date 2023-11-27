@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Import axios
 import './RecipeUploadForm.css';
 
 function RecipeUploadForm() {
-    const [userEmail, setUserEmail] = useState(''); // Added state for user email
+    const [userEmail, setUserEmail] = useState('');
     const [title, setTitle] = useState('');
     const [instructions, setInstructions] = useState('');
     const [image, setImage] = useState(null);
@@ -17,65 +18,42 @@ function RecipeUploadForm() {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        // Check if image is selected
         if (!image) {
             console.error('No image selected');
-            return; // or handle this scenario appropriately
+            return;
         }
 
-        // Split instructions into an array of strings based on newline
         const instructionsList = instructions.split('\n')
-            .map(line => line.trim()) // Trim each line
-            .filter(line => line); // Filter out empty strings
+            .map(line => line.trim())
+            .filter(line => line);
 
-        // Convert the image to base64
         const reader = new FileReader();
         reader.readAsDataURL(image);
 
         reader.onload = async () => {
-            // Ensure reader.result is a string before appending
             const base64Image = reader.result;
             if (typeof base64Image !== 'string') {
                 console.error('FileReader result is not a string');
                 return;
             }
 
-            // Prepare the form data
             const data = {
                 user_email: userEmail,
                 title: title,
                 instructions: instructionsList,
-                image: reader.result
+                image: base64Image
             };
 
-            console.log(data);
-
             try {
-                // Send the POST request
-                console.log(data);
-                const response = await fetch('http://10.40.134.55:3000/api/recipes', {
-                    method: 'POST',
+                const response = await axios.post('http://10.40.134.55:3000/api/recipes', data, {
                     headers: {
                         'Content-Type': 'application/json',
-                    },
-                    // body: data
-                    body: JSON.stringify({
-                        user_email: userEmail,
-                        title: title,
-                        instructions: instructionsList,
-                        image: reader.result
-                    })
+                    }
                 });
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
-                // Handle the response
-                const responseData = await response.json();
-                console.log('Upload successful', responseData);
+                console.log('Upload successful', response.data);
             } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
+                console.error('There was a problem with the axios request:', error);
             }
         };
 
