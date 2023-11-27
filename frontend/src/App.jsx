@@ -15,6 +15,8 @@ loadData().then(() => {
   // Now you can start your application or perform other operations
 });
 
+import RecipeUploadForm from './components/RecipeUpload';
+
 function App() {
   return (
     <>
@@ -28,6 +30,7 @@ function App() {
             <Route path="/soup" element={<Soup />} />
             <Route path="/dessert" element={<Dessert />} />
             <Route path="/recipe/:id" element={<Recipe />} />
+            <Route path="/upload" element={<RecipeUploadForm />} />
           </Routes>
         </div>
       </Router>
