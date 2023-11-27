@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios
 import './RecipeUploadForm.css';
 
 function RecipeUploadForm() {
@@ -45,15 +44,26 @@ function RecipeUploadForm() {
             };
 
             try {
-                const response = await axios.post('http://10.40.134.55:3000/api/recipes', data, {
+
+                console.log('Uploading recipe', data);
+
+                const response = await fetch('http://10.40.134.55:3000/api/recipes', {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                    }
+                    },
+                    body: JSON.stringify(data),
+                    timeout: 60000 // Note: fetch does not support request timeout by default
                 });
 
-                console.log('Upload successful', response.data);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const responseData = await response.json();
+                console.log('Upload successful', responseData);
             } catch (error) {
-                console.error('There was a problem with the axios request:', error);
+                console.error('Error:', error.message);
             }
         };
 
