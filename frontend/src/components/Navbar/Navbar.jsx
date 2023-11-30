@@ -6,7 +6,7 @@ import recipeIcon from "/assets/logo.png";
 import LoginButton from "./loginButton";
 import { loadData } from "../../pages/Contents";
 
-function Navbar() {
+function Navbar(user, setUser) {
   loadData().then(() => {
     console.log("Data loaded successfully");
   });
@@ -45,7 +45,7 @@ function Navbar() {
               </motion.div>
             </li>
           ))}
-          <LoginButton />
+          <LoginButton user = {user} setUser = {setUser}/>
         </ul>
       </div>
     </motion.nav>

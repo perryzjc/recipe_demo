@@ -3,7 +3,7 @@ import './RecipeUploadForm.css';
 
 
 
-function RecipeUploadForm() {
+function RecipeUploadForm(user) {
     const [userEmail, setUserEmail] = useState('');
     const [title, setTitle] = useState('');
     const [instructions, setInstructions] = useState('');

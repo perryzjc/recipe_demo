@@ -8,18 +8,24 @@ import axios from "axios";
 const client_id =
   "705348614157-a72p1367ihuicvn57llb1ngac74itclo.apps.googleusercontent.com";
 
-
-function LoginButton() {
+function LoginButton(user1, setUser1) {
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState(null);
 
   const login = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
+    onSuccess: async (codeResponse) => {
+      console.log("test here");
+      console.log(codeResponse);
+      await setUser(codeResponse);
+    },
     onError: (error) => console.log("Login Failed:", error),
   });
 
   useEffect(() => {
+    console.log("Login Success");
+    console.log(user);
     if (user) {
+      console.log(user.access_token);
       axios
         .get(
           `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
@@ -33,9 +39,6 @@ function LoginButton() {
         .then(async (res) => {
           setProfile(res.data);
           console.log("Profile:", res.data);
-
-        //   setUserEmail(res.data.email);
-
           try {
             const response = await fetch("http://10.40.134.55:3000/api/users", {
               method: "POST",
