@@ -8,24 +8,8 @@ import axios from "axios";
 const client_id =
   "705348614157-a72p1367ihuicvn57llb1ngac74itclo.apps.googleusercontent.com";
 
-const UserEmailContext = createContext();
-
-export const UserEmailProvider = ({ children }) => {
-  const [userEmail, setUserEmail] = useState(null);
-
-  return (
-    <UserEmailContext.Provider value={{ userEmail, setUserEmail }}>
-      {children}
-    </UserEmailContext.Provider>
-  );
-};
-
-export const useUserEmail = () => {
-  return useContext(UserEmailContext);
-};
 
 function LoginButton() {
-  const { setUserEmail } = useUserEmail();
   const [user, setUser] = useState([]);
   const [profile, setProfile] = useState(null);
 
@@ -50,7 +34,7 @@ function LoginButton() {
           setProfile(res.data);
           console.log("Profile:", res.data);
 
-          setUserEmail(res.data.email);
+        //   setUserEmail(res.data.email);
 
           try {
             const response = await fetch("http://10.40.134.55:3000/api/users", {
