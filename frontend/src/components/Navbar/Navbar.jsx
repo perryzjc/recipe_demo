@@ -46,9 +46,26 @@ function Navbar() {
             },
           }
         )
-        .then((res) => {
+        .then(async (res) => {
           setProfile(res.data);
           console.log("Profile:", res.data);
+          
+          try {
+            const response = await fetch('http://10.40.134.55:3000/api/users', {
+                method: 'POST',
+                body: {email : res.data.email} // No headers here as browser will set the correct 'Content-Type' for FormData
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const responseData = await response.json();
+            console.log('Upload successful', responseData);
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+
         })
         .catch((err) => console.log(err));
     }
