@@ -8,12 +8,13 @@ import axios from "axios";
 const client_id =
   "705348614157-a72p1367ihuicvn57llb1ngac74itclo.apps.googleusercontent.com";
 
-function LoginButton(user1, setUser1) {
-  const [user, setUser] = useState([]);
+function LoginButton({user, setUser}) {
+  // const [user, setUser] = useState([]);
   const [profile, setProfile] = useState(null);
 
   const login = useGoogleLogin({
     onSuccess: async (codeResponse) => {
+      console.log(setUser)
       console.log("test here");
       console.log(codeResponse);
       await setUser(codeResponse);

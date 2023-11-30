@@ -14,7 +14,7 @@ import getContents from "./utils/getContent.js";
 
 function App() {
   const [contents, setContents] = useState([]);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
   useEffect(() => {
     async function fetchData() {
       const data = await getContents();
