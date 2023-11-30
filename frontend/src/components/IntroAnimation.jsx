@@ -4,7 +4,8 @@ import { startAnimation } from '../utils/introAnimation.js'; // Import from anim
 const IntroAnimation = ({ onEnd }) => {
     useEffect(() => {
         // Initialize your animation
-        const animationControl = startAnimation();
+        // const animationControl = startAnimation();
+        console.log('Animation started');
 
         // When the component unmounts or animation ends
         return () => {

@@ -15,14 +15,10 @@ import getContents from "./utils/getContent.js";
 
 function App() {
     const [contents, setContents] = useState([]);
-    const [showIntro, setShowIntro] = useState(false);
+    const [showIntro, setShowIntro] = useState(true); // Set to true initially
+
 
     useEffect(() => {
-        // Check if the intro animation has been shown
-        if (!localStorage.getItem("introShown")) {
-            setShowIntro(true);
-        }
-
         async function fetchData() {
             const data = await getContents();
             console.log('Loading data...');
@@ -37,18 +33,28 @@ function App() {
         fetchData().then(() => {
             console.log('Data loaded successfully');
         });
+
+        // Check if the intro animation has been shown
+        if (localStorage.getItem("introShown")) {
+            setShowIntro(false); // Hide intro if already shown
+        }
     }, []);
 
-    // Function to hide the intro and set the flag in local storage
     const hideIntro = () => {
         localStorage.setItem("introShown", "true");
-        setShowIntro(false);
+        setShowIntro(false); // Hide the intro animation
+    };
+
+    const toggleIntro = () => {
+        setShowIntro(!showIntro);
+        localStorage.removeItem("introShown"); // Reset the local storage flag
     };
 
     return (
         <>
             {showIntro ? (
                 <IntroAnimation onEnd={hideIntro} />
+                // 123
             ) : (
                 <Router basename="/recipe_demo">
                     <div>
