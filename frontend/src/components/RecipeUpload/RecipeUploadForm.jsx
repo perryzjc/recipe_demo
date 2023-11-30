@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './RecipeUploadForm.css';
+import { UserEmailProvider } from '../Navbar/loginButton';
 
 function RecipeUploadForm() {
     const [userEmail, setUserEmail] = useState('');
@@ -58,14 +59,14 @@ function RecipeUploadForm() {
                 <input type="file" name="myfile" onChange={handleFileChange}/>
             </div>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="user-email">User Email:</label>
+                {/* <label htmlFor="user-email">User Email:</label>
                 <input
                     id="user-email"
                     type="email" // Set type to email for proper validation
                     value={userEmail}
                     onChange={(e) => setUserEmail(e.target.value)}
                     required
-                />
+                /> */}
 
                 <label htmlFor="title">Recipe Title:</label>
                 <input
