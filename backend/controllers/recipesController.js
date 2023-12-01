@@ -65,15 +65,23 @@ const getRecipes = async (req, res) => {
 const createRecipe = async (req, res) => {
     try {
         const recipeData = req.body;
-        console.log("Received recipe data:", recipeData);
-        console.log(recipeData.instructions)
+        // Convert recipeData to a regular JavaScript object if necessary
+        const normalizedRecipeData = Object.assign({}, recipeData);
+
+        console.log("Received recipe data:", normalizedRecipeData);
+        // decode json string for instructions for below code
+        normalizedRecipeData.instructions = JSON.parse(normalizedRecipeData.instructions)
+        console.log(normalizedRecipeData.instructions)
+
+        contents["contents"].push(normalizedRecipeData)
+        console.log(contents["contents"])
 
         /**const db = client.db("RecipeBlog"); 
         const result = await db.collection("recipes").insertOne(recipeData);
         
         res.status(201).json({ isSuccess: true, insertedId: result.insertedId });*/
-        res.status(201).json({ imagePath: recipeData.imagePath, isSuccess: true, insertedId: 999999999 });
-        console.log({ imagePath: recipeData.imagePath, isSuccess: true, insertedId: 999999999 })
+        res.status(201).json({ imagePath: normalizedRecipeData.imagePath, isSuccess: true, insertedId: 999999999 });
+        console.log({ imagePath: normalizedRecipeData.imagePath, isSuccess: true, insertedId: 999999999 })
     } catch (error) {
         console.error("Failed to create recipe:", error);
         res.status(500).send("Error creating recipe");

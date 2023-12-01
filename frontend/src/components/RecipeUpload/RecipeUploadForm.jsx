@@ -102,10 +102,10 @@ function RecipeUploadForm({user}) {
                     required
                 >
                     <option value="">Select a Category</option>
-                    <option value="appetizer">Appetizer</option>
-                    <option value="soup">Soup</option>
-                    <option value="maincourse">Main Course</option>
-                    <option value="dessert">Dessert</option>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Soup">Soup</option>
+                    <option value="Maincourse">Main Course</option>
+                    <option value="Dessert">Dessert</option>
                 </select>
 
                 <label htmlFor="instructions">Instructions:</label>
