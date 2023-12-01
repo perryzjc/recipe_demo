@@ -1,132 +1,133 @@
 /* RecipeUploadForm.css */
 .recipe-upload-form button {
-    background-color: #4CAF50; /* Green background */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
-    cursor: pointer;
+  background-color: #4caf50; /* Green background */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  cursor: pointer;
 }
 
-.recipe-upload-form button:hover, .recipe-upload-form button:focus {
-    background-color: #45a049; /* Darker green on hover/focus */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Shadow effect on hover/focus */
-    outline: none; /* Remove outline on focus */
+.recipe-upload-form button:hover,
+.recipe-upload-form button:focus {
+  background-color: #45a049; /* Darker green on hover/focus */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow effect on hover/focus */
+  outline: none; /* Remove outline on focus */
 }
 
 .recipe-upload-form input[type="text"],
 .recipe-upload-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
 }
 
 .recipe-upload-form input[type="text"]:focus,
 .recipe-upload-form textarea:focus {
-    border-color: #4CAF50; /* Green border on focus */
-    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Subtle glow effect */
-    outline: none; /* Remove outline on focus */
+  border-color: #4caf50; /* Green border on focus */
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Subtle glow effect */
+  outline: none; /* Remove outline on focus */
 }
 
 /* Focus effect for input fields */
 input:focus {
-    border-color: #007bff; /* Change as per your color scheme */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #007bff; /* Change as per your color scheme */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .recipe-upload-form {
-    background-color: #FFFFFF; /* White background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box-shadow for card effect */
-    width: 1000px; /* Fixed width, adjust as necessary */
-    margin: auto;
-    padding: 20px;
-    position: relative; /* For absolute positioning of elements inside */
+  background-color: #ffffff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box-shadow for card effect */
+  width: 1000px; /* Fixed width, adjust as necessary */
+  margin: auto;
+  padding: 20px;
+  position: relative; /* For absolute positioning of elements inside */
 }
 
 .recipe-upload-form form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .recipe-upload-form .upload-label {
-    font-family: 'Pacifico', cursive;
-    font-size: 1.5em;
-    color: rgb(73, 103, 170);
-    margin-bottom: 20px;
+  font-family: "Pacifico", cursive;
+  font-size: 1.5em;
+  color: rgb(73, 103, 170);
+  margin-bottom: 20px;
 }
 
 .recipe-upload-form label {
-    font-size: 14px;
-    color: #333333; /* Dark grey text */
-    margin-bottom: 8px;
+  font-size: 14px;
+  color: #333333; /* Dark grey text */
+  margin-bottom: 8px;
 }
 
 .recipe-upload-form input[type="text"],
 .recipe-upload-form textarea {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #cccccc; /* Light grey border */
-    border-radius: 4px; /* Slightly rounded edges for the input fields */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc; /* Light grey border */
+  border-radius: 4px; /* Slightly rounded edges for the input fields */
 }
 
 .recipe-upload-form #instructions {
-    height: 250px;
+  height: 250px;
 }
 
 /* Style for the upload image button */
 .upload-btn-wrapper {
-    position: absolute;
-    top: 10px; /* Adjust as necessary */
-    right: 20px; /* Adjust as necessary */
-    cursor: pointer;
+  position: absolute;
+  top: 10px; /* Adjust as necessary */
+  right: 20px; /* Adjust as necessary */
+  cursor: pointer;
 }
 
 .upload-btn-wrapper button {
-    font-family: 'Pacifico', cursive;
-    border: none;
-    color: white;
-    background: RGB(73, 103, 170);
-    font-size: 1em;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
+  font-family: "Pacifico", cursive;
+  border: none;
+  color: white;
+  background: RGB(73, 103, 170);
+  font-size: 1em;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Hidden file input for styling */
-.upload-btn-wrapper input[type='file'] {
-    font-size: 100px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    cursor: pointer; /* Ensure the cursor changes to pointer */
-    width: 100%; /* Full width to capture hover over the entire area */
-    height: 100%; /* Full height to capture hover over the entire area */
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer; /* Ensure the cursor changes to pointer */
+  width: 100%; /* Full width to capture hover over the entire area */
+  height: 100%; /* Full height to capture hover over the entire area */
 }
 
 .recipe-upload-form button[type="submit"] {
-    text-decoration: none;
-    font-family: 'Pacifico', cursive;
-    color: rgb(255, 255, 255);
-    font-size: 1em;
-    transition: all 0.3s;
-    font-weight: 500;
-    border-radius: 12px;
-    padding: 5px 15px;
-    background: #595959FF;
+  text-decoration: none;
+  font-family: "Pacifico", cursive;
+  color: rgb(255, 255, 255);
+  font-size: 1em;
+  transition: all 0.3s;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 5px 15px;
+  background: #595959ff;
 }
 
 /* Responsive design */
 @media (max-width: 600px) {
-    .recipe-upload-form {
-        width: 100%;
-        padding: 10px;
-    }
+  .recipe-upload-form {
+    width: 100%;
+    padding: 10px;
+  }
 }
