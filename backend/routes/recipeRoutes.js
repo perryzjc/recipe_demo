@@ -10,7 +10,7 @@ const upload = multer({ storage: storage });
 
 // Define routes
 router.get('/', getRecipes);
-router.post('/', upload.single('image'), createRecipe);
+router.post('/', upload.none(), createRecipe);
 /**router.get('/:id', getRecipeById);
 router.put('/:id', updateRecipe);
 router.delete('/:id', deleteRecipe);*/

@@ -13,9 +13,9 @@ import ImportBox from './ImportBox.jsx'
 function RecipeUploadForm({user}) {
     const [userEmail, setUserEmail] = useState(user.email);
     const [title, setTitle] = useState('');
-    const [instructions, setInstructions] = useState('');
+    const [category, setCategory] = useState('');
+    const [instructions, setInstructions] = useState("");
     const [image, setImage] = useState(null);
-    const maxFileSize = 20 * 1024 * 1024; // 20 MB
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     function handleConfirm(imgPath) {
@@ -26,15 +26,25 @@ function RecipeUploadForm({user}) {
         event.preventDefault();
 
         if (!image) {
-            console.error('No image selected');
+            alert('Please upload an image first')
             return;
         }
+        // if (!userEmail) {
+        //     alert('Please login to your email first');
+        //     return;
+        // }
+
+        // clean instructions text into a list of strings by \n. Clean out empty strings
+        const instructionsList = instructions.split('\n').filter((item) => item !== '');
+        console.log('instructionsList', instructionsList)
 
         const formData = new FormData();
-        formData.append('user_email', userEmail);
+        formData.append('email', userEmail);
         formData.append('title', title);
-        formData.append('instructions', instructions);
-        formData.append('image', image);
+        formData.append('category', category);
+        formData.append('instructions', JSON.stringify(instructionsList));
+        formData.append('imagePath', image);
+        console.log('formData here 123456', formData);
 
         try {
             const response = await fetch('http://localhost:3000/api/recipes', {
@@ -83,6 +93,20 @@ function RecipeUploadForm({user}) {
                     onChange={(e) => setTitle(e.target.value)}
                     required
                 />
+
+                <label htmlFor="category">Recipe Category:</label>
+                <select
+                    id="category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    required
+                >
+                    <option value="">Select a Category</option>
+                    <option value="appetizer">Appetizer</option>
+                    <option value="soup">Soup</option>
+                    <option value="maincourse">Main Course</option>
+                    <option value="dessert">Dessert</option>
+                </select>
 
                 <label htmlFor="instructions">Instructions:</label>
                 <textarea
