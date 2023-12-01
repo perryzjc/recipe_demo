@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
 import './RecipeUploadForm.css';
+import {
+  Modal,
+  ModalContent,
+  ModalOverlay,
+  useDisclosure,
+} from '@chakra-ui/react';
+import ImportBox from './ImportBox.jsx'
 
 
 
-function RecipeUploadForm(user) {
-    const [userEmail, setUserEmail] = useState('');
+function RecipeUploadForm({user}) {
+    const [userEmail, setUserEmail] = useState(user.email);
     const [title, setTitle] = useState('');
     const [instructions, setInstructions] = useState('');
     const [image, setImage] = useState(null);
     const maxFileSize = 20 * 1024 * 1024; // 20 MB
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
-    function handleFileChange(e) {
-        const file = e.target.files[0];
-        if (file) {
-            if (file.size > maxFileSize) {
-                alert("File size exceeds 20MB");
-                return;
-            }
-            setImage(file);
-        }
+    function handleConfirm(imgPath) {
+        setImage(imgPath);
     }
 
     async function handleSubmit(event) {
@@ -52,22 +53,27 @@ function RecipeUploadForm(user) {
         }
     }
 
+    //<input type="file" name="myfile" onChange={handleFileChange}/>
     return (
         <div className="recipe-upload-form">
             <div className="upload-label">Import Your Recipe</div>
+            <div className="image-info">{image ? (
+                <p>Image Upload successfully! 🎉 - <a href={image} target="_blank" rel="noopener noreferrer">View Image</a></p>
+                ) : (
+                <p>No Images uploaded yet! 🥲</p>
+            )}</div>
             <div className="upload-btn-wrapper">
-                <button>Upload Image</button>
-                <input type="file" name="myfile" onChange={handleFileChange}/>
+                <button
+                    onClick={onOpen}
+                >Upload Image</button>
+                <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent bg="none" boxShadow="none">
+                        <ImportBox onClose = {onClose} onConfirm={handleConfirm}/>
+                    </ModalContent>
+                </Modal>
             </div>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="user-email">User Email:</label>
-                <input
-                    id="user-email"
-                    type="email" // Set type to email for proper validation
-                    value={userEmail}
-                    onChange={(e) => setUserEmail(e.target.value)}
-                    required
-                />
 
                 <label htmlFor="title">Recipe Title:</label>
                 <input

@@ -8,7 +8,8 @@ import MainCourse from "./pages/MainCourse";
 import Soup from "./pages/Soup";
 import Dessert from "./pages/Dessert";
 import Recipe from "./pages/Recipe";
-import RecipeUploadForm from "./components/RecipeUpload";
+//import RecipeUploadForm from "./components/RecipeUpload";
+import UserPage from "./pages/UserPage";
 
 import getContents from "./utils/getContent.js";
 
@@ -48,7 +49,7 @@ function App() {
             <Route path="/soup" element={<Soup />} />
             <Route path="/dessert" element={<Dessert />} />
             <Route path="/recipe/:id" element={<Recipe />} />
-            <Route path="/upload" element={<RecipeUploadForm user={user} />} />
+            <Route path="/upload" element={<UserPage user={user} />} />
           </Routes>
         </div>
       </Router>

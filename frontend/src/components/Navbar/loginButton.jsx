@@ -66,6 +66,19 @@ function LoginButton({user, setUser}) {
     setProfile(null);
   };
 
+  const [hovered, setHovered] = useState(false);
+
+  const hoverStyles = {
+    opacity: 0.6,
+    borderRadius: "50%", 
+    height: "60px"
+  }
+  
+  const defaultStyles = {
+    borderRadius: "50%", 
+    height: "50px"
+  }
+
   return (
     <>
       {profile ? (
@@ -73,7 +86,9 @@ function LoginButton({user, setUser}) {
           <img
             src={profile.picture}
             alt="user image"
-            style={{ borderRadius: "50%", height: "50px" }}
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            style={hovered ? hoverStyles : defaultStyles}
           />
         </Link>
       ) : (
