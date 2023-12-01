@@ -1,14 +1,10 @@
 import React from "react";
 import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeListsDashBoardTemplate";
 
-// import { contents } from "./Contents";
-import { getData } from "../pages/Contents"
-
 const category = "Dessert";
 
-const desserts = getData().filter(item => item.category === category);
-
-const Dessert = () => {
+function Dessert(contents) {
+    const desserts = contents["contents"].filter(item => item.category === category);
     return (
         <RecipeListsDashBoardTemplate
             recipe_info_list={desserts}

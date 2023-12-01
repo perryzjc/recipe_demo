@@ -44,9 +44,9 @@ function App() {
               path="/appetizer"
               element={<Appetizer contents={contents} />}
             />
-            <Route path="/maincourse" element={<MainCourse />} />
-            <Route path="/soup" element={<Soup />} />
-            <Route path="/dessert" element={<Dessert />} />
+            <Route path="/maincourse" element={<MainCourse contents={contents} />} />
+            <Route path="/soup" element={<Soup contents={contents} />} />
+            <Route path="/dessert" element={<Dessert contents={contents} />} />
             <Route path="/recipe/:id" element={<Recipe />} />
             <Route path="/upload" element={<RecipeUploadForm user={user} />} />
           </Routes>
