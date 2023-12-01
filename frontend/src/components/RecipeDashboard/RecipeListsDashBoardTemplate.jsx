@@ -21,7 +21,7 @@ function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundIm
               <RecipeCard
                 title={recipe_info.title}
                 description={recipe_info.description}
-                img_path={recipe_info.imageData}
+                img_path={recipe_info.imagePath}
               />
             </Link>
           ))}
