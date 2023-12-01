@@ -18,13 +18,13 @@ function getContents() {
                 category: item.category,
                 title: item.title,
                 // Other transformations...
-                imageData: item.imageData,
-                author: item.user_email,
+                imagePath: item.imagePath,
+                author: item.email,
                 instructions: item.instructions || [],
                 // Add other fields as necessary
             };
         });
-
+        console.log("I am transformed data")
         console.log(transformedData);
         return transformedData;
     })
