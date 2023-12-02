@@ -48,7 +48,7 @@ function App() {
             <Route path="/maincourse" element={<MainCourse contents={contents} />} />
             <Route path="/soup" element={<Soup contents={contents} />} />
             <Route path="/dessert" element={<Dessert contents={contents} />} />
-            <Route path="/recipe/:id" element={<Recipe />} />
+            <Route path="/recipe/:id" element={<Recipe contents={contents} />} />
             <Route path="/upload" element={<UserPage user={user} />} />
           </Routes>
         </div>
