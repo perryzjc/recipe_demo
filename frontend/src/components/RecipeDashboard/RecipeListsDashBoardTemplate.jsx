@@ -6,7 +6,7 @@ import {resolveImagePath} from "../../utils/resolveImagePath";
 
 function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundImage }) {
   const backgroundStyle = {
-    backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${backgroundImage})`,
+    backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${resolveImagePath(backgroundImage)})`,
   };
 
   console.log("something is here")
