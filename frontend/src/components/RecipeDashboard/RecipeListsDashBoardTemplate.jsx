@@ -20,11 +20,11 @@ function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundIm
       <div className="panel">
         <div className="grid-container">
           {recipe_info_list.map((recipe_info) => (
-            <Link key={recipe_info.id} to={`/recipe/${recipe_info.id}`} className="grid-item">
+            <Link key={recipe_info.id} to={`/recipe/${recipe_info.id}`} className="grid-item" basename="/recipe_demo">
               <RecipeCard
                 title={recipe_info.title}
                 description={recipe_info.description}
-                img_path={`../${recipe_info.imagePath}`}
+                img_path={recipe_info.imagePath}
               />
             </Link>
           ))}
