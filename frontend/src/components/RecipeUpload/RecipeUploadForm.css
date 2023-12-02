@@ -81,6 +81,10 @@ input:focus {
   height: 250px;
 }
 
+.image-info {
+  text-align: center;
+}
+
 /* Style for the upload image button */
 .upload-btn-wrapper {
   position: absolute;
@@ -124,10 +128,40 @@ input:focus {
   background: #595959ff;
 }
 
+.recipe-upload-form select {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #cccccc; /* Light grey border */
+  border-radius: 4px; /* Rounded edges */
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.recipe-upload-form select:focus {
+  border-color: #4caf50; /* Green border on focus */
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.3); /* Subtle glow effect */
+  outline: none; /* Remove outline on focus */
+}
+
+/* Adjustments for consistency */
+.recipe-upload-form input[type="text"],
+.recipe-upload-form textarea,
+.recipe-upload-form select {
+  width: 100%; /* Full width for consistency */
+  box-sizing: border-box; /* To include padding and border in the width */
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
   .recipe-upload-form {
     width: 100%;
     padding: 10px;
+  }
+
+  .upload-btn-wrapper {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
   }
 }

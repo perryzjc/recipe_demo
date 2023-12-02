@@ -1,21 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './styles.css';
 
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 // import { contents } from "../../pages/Contents";
 import { useNavigate } from 'react-router-dom';
-import { getData } from "../../pages/Contents"
+import {resolveImagePath} from "../../utils/resolveImagePath.js";
 
 
-const items = getData().map(item => ({
-  id: item.id,
-  name: item.title,
-  image: item.imagePath,
-  category: item.category
-}));
-
-function SearchBox() {
+function SearchBox(contents) {
+  const [searchItems, setSearchItems] = useState([]);
   const navigateTo = useNavigate();
+
+  // Transform data to match the expected format for search
+  useEffect(() => {
+    if (contents && contents.contents) {
+      const transformedItems = contents.contents.map(item => ({
+        ...item,
+        name: item.title // Transform 'title' to 'name'
+      }));
+      setSearchItems(transformedItems);
+    }
+  }, [contents]);
 
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
@@ -31,25 +36,33 @@ function SearchBox() {
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item)
-    navigateTo(`/recipe/${item.id}`);
+    // navigateTo(`/recipe/${item.id}`);
+    navigateTo(resolveImagePath(`/recipe/${item.id}`));
   }
   
   const handleOnFocus = () => {
     console.log('Focused')
   }
+
+  // console.log("test contents")
+  //   console.log(contents)
+  // console.log("test contents.contents")
+  //   console.log(contents.contents)
   
   const formatResult = (item) => {
     // change the item.name below to title search
+    console.log("test item")
+    console.log(item)
     return (
       <>
         <span className='search-result'>
-          <img src={`/recipe_demo` + item.image} alt="Recipe" width="100" height="100"/>
+          <img src={resolveImagePath(item.imagePath)} alt="Recipe" width="100" height="100"/>
           <div className='search-content'>
             <div className='search-content-category'>
               {item.category}
             </div>
             <div>
-              {item.name}
+              {item.title}
             </div>
           </div>
         </span>
@@ -60,20 +73,26 @@ function SearchBox() {
   return (
     <div className='search-box'>
       <ReactSearchAutocomplete
-        items={items}
+        // items={contents.contents}
+        items={searchItems}
         onSearch={handleOnSearch}
         onHover={handleOnHover}
         onSelect={handleOnSelect}
         onFocus={handleOnFocus}
         showIcon={false}
-        maxResults={3}
+        maxResults={5}
         autoFocus
         styling={
           {
             backgroundColor: "lavender",
+            borderRadius: "10px",
+            fontSize: "20px",
+            height: "30px",
           }
         }
         formatResult={formatResult}
+        placeholder="🔎 Search for a recipe..."
+        type="text" 
       />
     </div>
   );

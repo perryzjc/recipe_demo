@@ -46,16 +46,17 @@ const contents = require('../controllers/mockContents')
 //   };
 
 //const contents = require("./mockContents.js").contents;
-// const client = require('../config/db'); // Import the MongoDB client
+const client = require('../config/db'); // Import the MongoDB client
 
 const getRecipes = async (req, res) => {
   console.log("Test get in");
     try {
-        /**const db = client.db("RecipeBlog");
+        const db = client.db("RecipeBlog");
         const recipes = await db.collection("recipes").find({}).toArray();
-        res.status(200).json(recipes);*/
-        console.log(contents["contents"])
-        res.status(200).json(contents);
+        console.log(recipes)
+        res.status(200).json(recipes);
+        /**console.log(contents["contents"])
+        res.status(200).json(contents);*/
     } catch (error) {
         console.error("Failed to retrieve recipes:", error);
         res.status(500).send("Error retrieving recipes");
@@ -65,17 +66,23 @@ const getRecipes = async (req, res) => {
 const createRecipe = async (req, res) => {
     try {
         const recipeData = req.body;
-        console.log(req.file);
-        console.log("Received recipe data:", recipeData);
+        // Convert recipeData to a regular JavaScript object if necessary
+        const normalizedRecipeData = Object.assign({}, recipeData);
 
-        const base64String = req.file.buffer.toString('base64');
-        console.log(base64String);
+        console.log("Received recipe data:", normalizedRecipeData);
+        // decode json string for instructions for below code
+        normalizedRecipeData.instructions = JSON.parse(normalizedRecipeData.instructions)
+        console.log(normalizedRecipeData.instructions)
+
+        contents["contents"].push(normalizedRecipeData)
+        console.log(contents["contents"])
 
         /**const db = client.db("RecipeBlog"); 
         const result = await db.collection("recipes").insertOne(recipeData);
         
         res.status(201).json({ isSuccess: true, insertedId: result.insertedId });*/
-        res.status(201).json({ image: base64String, isSuccess: true, insertedId: 999999999 });
+        res.status(201).json({ imagePath: normalizedRecipeData.imagePath, isSuccess: true, insertedId: 999999999 });
+        console.log({ imagePath: normalizedRecipeData.imagePath, isSuccess: true, insertedId: 999999999 })
     } catch (error) {
         console.error("Failed to create recipe:", error);
         res.status(500).send("Error creating recipe");

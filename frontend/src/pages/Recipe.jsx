@@ -1,26 +1,24 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-// import { contents } from "./Contents.jsx";
-import { getData } from "../pages/Contents"
 import './Page.css';
 import RecipeInstruction from "../components/RecipeInstruction/RecipeInstruction.jsx";
+import {resolveImagePath} from "../utils/resolveImagePath.js";
 
 
-const recipes = getData()
-
-
-function Recipe() {
+function Recipe(contents) {
   const { id, image } = useParams();
-  const selectedRecipe = recipes.find((recipe) => recipe.id === parseInt(id));
+  console.log("test id");
+  const selectedRecipe = contents.contents.find((recipe) => recipe.id === id);
 
   if (!selectedRecipe) {
     return <div>Recipe not found</div>;
   }
-
+  console.log("test selectedRecipe");
+  console.log(contents)
   return (
     <RecipeInstruction
         recipeName={selectedRecipe.title}
-        recipeImage={`../${selectedRecipe.imagePath}`}
+        recipeImage={resolveImagePath(selectedRecipe.imagePath)}
         instructions={selectedRecipe.instructions}
     />
 );

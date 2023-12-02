@@ -9,13 +9,16 @@ import Soup from "./pages/Soup";
 import Dessert from "./pages/Dessert";
 import Recipe from "./pages/Recipe";
 import RecipeUploadForm from './components/RecipeUpload';
-// import IntroAnimation from './components/IntroAnimation'; // Import your intro animation component
+import IntroAnimation from './components/IntroAnimation'; // Import your intro animation component
+import UserPage from "./pages/UserPage";
 
 import getContents from "./utils/getContent.js";
 
 function App() {
   const [contents, setContents] = useState([]);
   const [user, setUser] = useState([]);
+  const [firstVisit, setFirstVisit] = useState(true);
+
   useEffect(() => {
     async function fetchData() {
       const data = await getContents();
@@ -34,13 +37,27 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (!hasVisited) {
+      setFirstVisit(true);
+      localStorage.setItem('hasVisited', 'true');
+    }
+  }, []);
+
+  const handleAnimationComplete = () => {
+    setFirstVisit(false);
+  };
+
   return (
     <>
       <Router basename="/recipe_demo">
         <div>
-          <Navbar user={user} setUser={setUser} />
+          <Navbar contents={contents} user={user} setUser={setUser} />
           <Routes>
-            <Route path="/" element={<Home />} />
+            return (
+            );
+            <Route path="/" element={firstVisit ? <IntroAnimation onAnimationComplete={handleAnimationComplete}/> : <Home />} />
             <Route
               path="/appetizer"
               element={<Appetizer contents={contents} />}
@@ -48,8 +65,8 @@ function App() {
             <Route path="/maincourse" element={<MainCourse contents={contents} />} />
             <Route path="/soup" element={<Soup contents={contents} />} />
             <Route path="/dessert" element={<Dessert contents={contents} />} />
-            <Route path="/recipe/:id" element={<Recipe />} />
-            <Route path="/upload" element={<RecipeUploadForm user={user} />} />
+            <Route path="/recipe/:id" element={<Recipe contents={contents} />} />
+            <Route path="/upload" element={<UserPage user={user} />} />
           </Routes>
         </div>
       </Router>

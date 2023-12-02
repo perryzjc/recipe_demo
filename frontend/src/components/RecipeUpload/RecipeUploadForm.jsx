@@ -1,39 +1,50 @@
 import React, { useState } from 'react';
 import './RecipeUploadForm.css';
+import {
+  Modal,
+  ModalContent,
+  ModalOverlay,
+  useDisclosure,
+} from '@chakra-ui/react';
+import ImportBox from './ImportBox.jsx'
 
 
 
-function RecipeUploadForm(user) {
-    const [userEmail, setUserEmail] = useState('');
+function RecipeUploadForm({user}) {
+    const [userEmail, setUserEmail] = useState(user.email);
     const [title, setTitle] = useState('');
-    const [instructions, setInstructions] = useState('');
+    const [category, setCategory] = useState('');
+    const [instructions, setInstructions] = useState("");
     const [image, setImage] = useState(null);
-    const maxFileSize = 20 * 1024 * 1024; // 20 MB
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
-    function handleFileChange(e) {
-        const file = e.target.files[0];
-        if (file) {
-            if (file.size > maxFileSize) {
-                alert("File size exceeds 20MB");
-                return;
-            }
-            setImage(file);
-        }
+    function handleConfirm(imgPath) {
+        setImage(imgPath);
     }
 
     async function handleSubmit(event) {
         event.preventDefault();
 
         if (!image) {
-            console.error('No image selected');
+            alert('Please upload an image first')
             return;
         }
+        // if (!userEmail) {
+        //     alert('Please login to your email first');
+        //     return;
+        // }
+
+        // clean instructions text into a list of strings by \n. Clean out empty strings
+        const instructionsList = instructions.split('\n').filter((item) => item !== '');
+        console.log('instructionsList', instructionsList)
 
         const formData = new FormData();
-        formData.append('user_email', userEmail);
+        formData.append('email', userEmail);
         formData.append('title', title);
-        formData.append('instructions', instructions);
-        formData.append('image', image);
+        formData.append('category', category);
+        formData.append('instructions', JSON.stringify(instructionsList));
+        formData.append('imagePath', image);
+        console.log('formData here 123456', formData);
 
         try {
             const response = await fetch('http://localhost:3000/api/recipes', {
@@ -52,22 +63,27 @@ function RecipeUploadForm(user) {
         }
     }
 
+    //<input type="file" name="myfile" onChange={handleFileChange}/>
     return (
         <div className="recipe-upload-form">
             <div className="upload-label">Import Your Recipe</div>
+            <div className="image-info">{image ? (
+                <p>Image Upload successfully! 🎉 - <a href={image} target="_blank" rel="noopener noreferrer">View Image</a></p>
+                ) : (
+                <p>No Images uploaded yet! 🥲</p>
+            )}</div>
             <div className="upload-btn-wrapper">
-                <button>Upload Image</button>
-                <input type="file" name="myfile" onChange={handleFileChange}/>
+                <button
+                    onClick={onOpen}
+                >Upload Image</button>
+                <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent bg="none" boxShadow="none">
+                        <ImportBox onClose = {onClose} onConfirm={handleConfirm}/>
+                    </ModalContent>
+                </Modal>
             </div>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="user-email">User Email:</label>
-                <input
-                    id="user-email"
-                    type="email" // Set type to email for proper validation
-                    value={userEmail}
-                    onChange={(e) => setUserEmail(e.target.value)}
-                    required
-                />
 
                 <label htmlFor="title">Recipe Title:</label>
                 <input
@@ -77,6 +93,20 @@ function RecipeUploadForm(user) {
                     onChange={(e) => setTitle(e.target.value)}
                     required
                 />
+
+                <label htmlFor="category">Recipe Category:</label>
+                <select
+                    id="category"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    required
+                >
+                    <option value="">Select a Category</option>
+                    <option value="Appetizer">Appetizer</option>
+                    <option value="Soup">Soup</option>
+                    <option value="MainCourse">Main Course</option>
+                    <option value="Dessert">Dessert</option>
+                </select>
 
                 <label htmlFor="instructions">Instructions:</label>
                 <textarea

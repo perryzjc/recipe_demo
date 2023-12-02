@@ -3,7 +3,6 @@ import "./HomePageDashBoard.css";
 import { Link } from "react-router-dom";
 
 import RecipeCard from "../RecipeCard/RecipeCard";
-import SearchBox from "../SearchBox/SearchBox";
 
 import soupIcon from "/assets/soup.jpg";
 import mainCourseIcon from "/assets/maincourse.jpg";
@@ -13,14 +12,6 @@ import appetizerIcon from "/assets/appe.jpg";
 function HomePageDashboard() {
   return (
     <div className="card-layout">
-      <div className="search-box-wrapper">
-        <SearchBox
-          type="text"
-          placeholder="Search for a recipe..."
-          className="search-box"
-        />
-      </div>
-      
       <Link to="/appetizer" className="card-link">
         <RecipeCard
           title="Appetizer"
@@ -28,7 +19,8 @@ function HomePageDashboard() {
           img_path={appetizerIcon}
         />
       </Link>
-      
+
+      <div className="space"></div>
       <Link to="/maincourse" className="card-link">
         <RecipeCard
           title="Main Course"
@@ -36,7 +28,7 @@ function HomePageDashboard() {
           img_path={mainCourseIcon}
         />
       </Link>
-      
+
       <Link to="/soup" className="card-link">
         <RecipeCard
           title="Soup"
@@ -44,7 +36,9 @@ function HomePageDashboard() {
           img_path={soupIcon}
         />
       </Link>
-      
+
+      <div className="space"></div>
+
       <Link to="/dessert" className="card-link">
         <RecipeCard
           title="Dessert"
