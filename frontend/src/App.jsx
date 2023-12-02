@@ -8,7 +8,8 @@ import MainCourse from "./pages/MainCourse";
 import Soup from "./pages/Soup";
 import Dessert from "./pages/Dessert";
 import Recipe from "./pages/Recipe";
-//import RecipeUploadForm from "./components/RecipeUpload";
+import RecipeUploadForm from './components/RecipeUpload';
+import IntroAnimation from './components/IntroAnimation'; // Import your intro animation component
 import UserPage from "./pages/UserPage";
 
 import getContents from "./utils/getContent.js";
@@ -16,6 +17,8 @@ import getContents from "./utils/getContent.js";
 function App() {
   const [contents, setContents] = useState([]);
   const [user, setUser] = useState([]);
+  const [firstVisit, setFirstVisit] = useState(true);
+
   useEffect(() => {
     async function fetchData() {
       const data = await getContents();
@@ -34,13 +37,27 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('hasVisited');
+    if (!hasVisited) {
+      setFirstVisit(true);
+      localStorage.setItem('hasVisited', 'true');
+    }
+  }, []);
+
+  const handleAnimationComplete = () => {
+    setFirstVisit(false);
+  };
+
   return (
     <>
       <Router basename="/recipe_demo">
         <div>
           <Navbar contents={contents} user={user} setUser={setUser} />
           <Routes>
-            <Route path="/" element={<Home />} />
+            return (
+            );
+            <Route path="/" element={firstVisit ? <IntroAnimation contents={contents} onAnimationComplete={handleAnimationComplete}/> : <Home />} />
             <Route
               path="/appetizer"
               element={<Appetizer contents={contents} />}
