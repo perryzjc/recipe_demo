@@ -10,11 +10,11 @@ function getContents() {
         })
         .then(jsonData => {
             console.log("test123123123123123123123")
-            console.log(jsonData["contents"])
+            console.log(jsonData)
             // Transform the data to match the structure in contents.jsx
-            const transformedData = jsonData["contents"].map(item => {
+            const transformedData = jsonData.map(item => {
                 return {
-                    id: item._id["$oid"],
+                    id: item._id,
                     category: item.category,
                     title: item.title,
                     // Other transformations...
