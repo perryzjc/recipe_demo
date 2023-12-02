@@ -317,6 +317,8 @@ const IntroAnimation = ({ onAnimationComplete }) => {
             // 8. End the animation and enable the OrbitControls
             tl.eventCallback('onComplete', () => {
                 controls.enabled = true;
+                // Notify the parent component that the animation is complete
+                onAnimationComplete();
             });
 
             return tl;
