@@ -3,11 +3,27 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import gsap from 'gsap';
+import {resolveImagePath} from "../utils/resolveImagePath.js";
 
-const IntroAnimation = ({ onAnimationComplete }) => {
+const IntroAnimation = ({ contents, onAnimationComplete }) => {
     const containerRef = useRef(null);
 
+    // Function to preload images
+    const preloadImages = (images) => {
+        return Promise.all(images.map(imageSrc => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = resolve;
+                img.onerror = reject;
+                img.src = imageSrc;
+            });
+        }));
+    };
+
     useEffect(() => {
+        if (contents.length === 0) {
+            return;
+        }
         console.log("Start of IntroAnimation.jsx");
 
         // Setup Three.js Scene, Camera, Renderer, etc.
@@ -23,9 +39,18 @@ const IntroAnimation = ({ onAnimationComplete }) => {
         const totalImages = 32;
         const projects = [];
 
-        for (let i = 2; i <= totalImages; i += 3) {
-            const formattedNumber = String(i).padStart(4, '0'); // This will format numbers like 1 to 0001, 2 to 0002, etc.
-            const imageSrc = `https://storage.googleapis.com/cai-xu-kun/img_cxk/screenshot_${formattedNumber}.png`;
+        // cxk photos
+        // for (let i = 2; i <= totalImages; i += 3) {
+        //     const formattedNumber = String(i).padStart(4, '0'); // This will format numbers like 1 to 0001, 2 to 0002, etc.
+        //     const imageSrc = `https://storage.googleapis.com/cai-xu-kun/img_cxk/screenshot_${formattedNumber}.png`;
+        //     projects.push({
+        //         image_src: imageSrc
+        //     });
+        // }
+
+        // use photos from recipe contents
+        for (let i = 0; i < contents.length; i++) {
+            const imageSrc = resolveImagePath(contents[i].imagePath)
             projects.push({
                 image_src: imageSrc
             });
@@ -107,7 +132,11 @@ const IntroAnimation = ({ onAnimationComplete }) => {
         controls.minDistance = 5;
         controls.maxDistance = 500;
 
-        function loadProjects(projects) {
+        async function loadProjects(projects) {
+            // Preload images
+            const imageSrcs = projects.map(p => p.image_src);
+            await preloadImages(imageSrcs);
+
             // 更新角度计算
             const angleOccupiedByWall = 2 * Math.PI / numWalls;
 
@@ -155,8 +184,6 @@ const IntroAnimation = ({ onAnimationComplete }) => {
             mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
             raycaster.setFromCamera(mouse, camera);
         }, false);
-
-        loadProjects(projects);
 
         const clock = new THREE.Clock();
 
@@ -326,11 +353,12 @@ const IntroAnimation = ({ onAnimationComplete }) => {
 
         console.log("Start animation");
 
-        const startTL = startAnimation();
-        controls.enabled = false; // 禁用OrbitControls，直到动画结束
-
-        // Add the rest of the JavaScript code here...
-        animate();
+        // Start the animation after images are loaded
+        loadProjects(projects).then(() => {
+            const startTL = startAnimation();
+            controls.enabled = false; // Disable OrbitControls until the animation ends
+            animate();
+        });
 
         console.log("End of IntroAnimation.jsx");
 
@@ -341,7 +369,7 @@ const IntroAnimation = ({ onAnimationComplete }) => {
                 containerRef.current.removeChild(renderer.domElement);
             }
         };
-    }, []);
+    }, [contents]);
 
     return (
         <div ref={containerRef} />

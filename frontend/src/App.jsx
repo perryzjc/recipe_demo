@@ -57,7 +57,7 @@ function App() {
           <Routes>
             return (
             );
-            <Route path="/" element={firstVisit ? <IntroAnimation onAnimationComplete={handleAnimationComplete}/> : <Home />} />
+            <Route path="/" element={firstVisit ? <IntroAnimation contents={contents} onAnimationComplete={handleAnimationComplete}/> : <Home />} />
             <Route
               path="/appetizer"
               element={<Appetizer contents={contents} />}
