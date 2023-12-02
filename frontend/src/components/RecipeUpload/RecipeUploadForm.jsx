@@ -104,7 +104,7 @@ function RecipeUploadForm({user}) {
                     <option value="">Select a Category</option>
                     <option value="Appetizer">Appetizer</option>
                     <option value="Soup">Soup</option>
-                    <option value="Maincourse">Main Course</option>
+                    <option value="MainCourse">Main Course</option>
                     <option value="Dessert">Dessert</option>
                 </select>
 
