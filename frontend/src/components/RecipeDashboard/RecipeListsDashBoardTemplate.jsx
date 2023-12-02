@@ -11,6 +11,9 @@ function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundIm
   console.log("something is here")
   console.log(recipe_info_list);
 
+  console.log("image path at dshboard template: ")
+    console.log(recipe_info_list[0].imagePath)
+
   return (
     <div className="categoryPage" style={backgroundStyle}>
       <h2>{category}</h2>
@@ -21,7 +24,7 @@ function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundIm
               <RecipeCard
                 title={recipe_info.title}
                 description={recipe_info.description}
-                img_path={recipe_info.imagePath}
+                img_path={`../${recipe_info.imagePath}`}
               />
             </Link>
           ))}
