@@ -71,9 +71,14 @@ function SearchBox() {
         styling={
           {
             backgroundColor: "lavender",
+            borderRadius: "10px",
+            fontSize: "20px",
+            height: "30px",
           }
         }
         formatResult={formatResult}
+        placeholder="🔎 Search for a recipe..."
+        type="text" 
       />
     </div>
   );

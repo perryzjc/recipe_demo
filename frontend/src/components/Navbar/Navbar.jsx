@@ -31,11 +31,7 @@ function Navbar({ user, setUser }) {
         </Link>
 
         <div className="search-box-wrapper">
-          <SearchBox
-            type="text"
-            placeholder="Search for a recipe..."
-            className="search-box"
-          />
+          <SearchBox/>
         </div>
 
         <ul className="navbar-list">
