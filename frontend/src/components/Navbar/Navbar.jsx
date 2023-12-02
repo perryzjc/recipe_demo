@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import "./Navbar.css";
 import recipeIcon from "/assets/logo.png";
 import LoginButton from "./loginButton";
+import SearchBox from "../SearchBox/SearchBox";
 import { loadData } from "../../pages/Contents";
 
-function Navbar({user, setUser}) {
+function Navbar({ user, setUser }) {
   loadData().then(() => {
     console.log("Data loaded successfully");
   });
@@ -28,6 +29,15 @@ function Navbar({user, setUser}) {
           <img src={recipeIcon} alt="Recipe" className="navbar-icon" />
           Recepi Blog
         </Link>
+
+        <div className="search-box-wrapper">
+          <SearchBox
+            type="text"
+            placeholder="Search for a recipe..."
+            className="search-box"
+          />
+        </div>
+
         <ul className="navbar-list">
           {["Appetizer", "Main Course", "Soup", "Dessert"].map((item) => (
             <li className="nav-item" key={item}>
@@ -45,7 +55,7 @@ function Navbar({user, setUser}) {
               </motion.div>
             </li>
           ))}
-          <LoginButton user={user} setUser={setUser}/>
+          <LoginButton user={user} setUser={setUser} />
         </ul>
       </div>
     </motion.nav>
