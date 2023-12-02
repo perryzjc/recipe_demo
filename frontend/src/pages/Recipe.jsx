@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import './Page.css';
 import RecipeInstruction from "../components/RecipeInstruction/RecipeInstruction.jsx";
+import {resolveImagePath} from "../utils/resolveImagePath.js";
 
 
 function Recipe(contents) {
@@ -17,7 +18,7 @@ function Recipe(contents) {
   return (
     <RecipeInstruction
         recipeName={selectedRecipe.title}
-        recipeImage={`../${selectedRecipe.imagePath}`}
+        recipeImage={resolveImagePath(selectedRecipe.imagePath)}
         instructions={selectedRecipe.instructions}
     />
 );
