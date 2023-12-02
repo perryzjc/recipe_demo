@@ -7,7 +7,7 @@ import LoginButton from "./loginButton";
 import SearchBox from "../SearchBox/SearchBox";
 import { loadData } from "../../pages/Contents";
 
-function Navbar({ user, setUser }) {
+function Navbar({ contents, user, setUser }) {
   loadData().then(() => {
     console.log("Data loaded successfully");
   });
@@ -31,7 +31,7 @@ function Navbar({ user, setUser }) {
         </Link>
 
         <div className="search-box-wrapper">
-          <SearchBox/>
+          <SearchBox contents={contents} />
         </div>
 
         <ul className="navbar-list">

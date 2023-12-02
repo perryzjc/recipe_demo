@@ -38,7 +38,7 @@ function App() {
     <>
       <Router basename="/recipe_demo">
         <div>
-          <Navbar user={user} setUser={setUser} />
+          <Navbar contents={contents} user={user} setUser={setUser} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
