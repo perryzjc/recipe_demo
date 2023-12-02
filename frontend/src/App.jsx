@@ -50,27 +50,27 @@ function App() {
   };
 
   return (
-    <>
-      <Router basename="/recipe_demo">
-        <div>
-          <Navbar contents={contents} user={user} setUser={setUser} />
-          <Routes>
-            return (
-            );
-            <Route path="/" element={firstVisit ? <IntroAnimation contents={contents} onAnimationComplete={handleAnimationComplete}/> : <Home />} />
-            <Route
-              path="/appetizer"
-              element={<Appetizer contents={contents} />}
-            />
-            <Route path="/maincourse" element={<MainCourse contents={contents} />} />
-            <Route path="/soup" element={<Soup contents={contents} />} />
-            <Route path="/dessert" element={<Dessert contents={contents} />} />
-            <Route path="/recipe/:id" element={<Recipe contents={contents} />} />
-            <Route path="/upload" element={<UserPage user={user} />} />
-          </Routes>
-        </div>
-      </Router>
-    </>
+      <>
+        <Router basename="/recipe_demo">
+          <div>
+            <Navbar contents={contents} user={user} setUser={setUser} />
+            <Routes>
+              return (
+              );
+              <Route path="/" element={(firstVisit && contents.length !== 0) ? <IntroAnimation contents={contents} onAnimationComplete={handleAnimationComplete}/> : <Home />} />
+              <Route
+                  path="/appetizer"
+                  element={<Appetizer contents={contents} />}
+              />
+              <Route path="/maincourse" element={<MainCourse contents={contents} />} />
+              <Route path="/soup" element={<Soup contents={contents} />} />
+              <Route path="/dessert" element={<Dessert contents={contents} />} />
+              <Route path="/recipe/:id" element={<Recipe contents={contents} />} />
+              <Route path="/upload" element={<UserPage user={user} />} />
+            </Routes>
+          </div>
+        </Router>
+      </>
   );
 }
 
