@@ -8,7 +8,7 @@ const userController = require('../controllers/userController');
 router.post('/', userController.postByGmail);
 
 // GET route - Check if user is allowed (is_allow: true)
-router.get('/', userController.getByGmail);
+router.post('/check', userController.getByGmail);
 
 module.exports = router;
 
