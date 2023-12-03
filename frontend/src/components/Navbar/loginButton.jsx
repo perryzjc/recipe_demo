@@ -9,41 +9,39 @@ const client_id =
   "705348614157-a72p1367ihuicvn57llb1ngac74itclo.apps.googleusercontent.com";
 
 function LoginButton({user, setUser}) {
-  // const [user, setUser] = useState([]);
-  const [profile, setProfile] = useState(null);
+  const [initalU, setinitalU] = useState(null);
+  //const [profile, setProfile] = useState(null);
 
   const login = useGoogleLogin({
     onSuccess: async (codeResponse) => {
-      console.log(setUser)
-      console.log("test here");
-      console.log(codeResponse);
-      await setUser(codeResponse);
+      await setinitalU(codeResponse);
     },
     onError: (error) => console.log("Login Failed:", error),
   });
 
   useEffect(() => {
-    console.log("Login Success");
-    console.log(user);
-    if (user) {
-      console.log(user.access_token);
+    if (initalU) {
+      console.log("Login Success");
+      console.log(initalU);
+      console.log(initalU.access_token);
       axios
         .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${initalU.access_token}`,
           {
             headers: {
-              Authorization: `Bearer ${user.access_token}`,
+              Authorization: `Bearer ${initalU.access_token}`,
               Accept: "application/json",
             },
           }
         )
         .then(async (res) => {
-          setProfile(res.data);
+          setUser(res.data);
           console.log("Profile:", res.data);
           try {
-            const response = await fetch("http://10.40.134.55:3000/api/users", {
+            const response = await fetch(import.meta.env.VITE_APP_API_URL + "/users", {
               method: "POST",
-              body: { email: res.data.email }, // No headers here as browser will set the correct 'Content-Type' for FormData
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: res.data.email }), // No headers here as browser will set the correct 'Content-Type' for FormData
             });
 
             if (!response.ok) {
@@ -51,14 +49,14 @@ function LoginButton({user, setUser}) {
             }
 
             const responseData = await response.json();
-            console.log("Upload successful", responseData);
+            console.log("Get User info successful", responseData);
           } catch (error) {
             console.error("Error:", error.message);
           }
         })
         .catch((err) => console.log(err));
     }
-  }, [user]);
+  }, [initalU]);
 
   // log out function to lothe user out of google and set the profile array to null
   const logOut = () => {
@@ -81,10 +79,10 @@ function LoginButton({user, setUser}) {
 
   return (
     <>
-      {profile ? (
+      {user ? (
         <Link to="/upload">
           <img
-            src={profile.picture}
+            src={user.picture}
             alt="user image"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}

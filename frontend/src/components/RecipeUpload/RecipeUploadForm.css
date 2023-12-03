@@ -49,6 +49,7 @@ input:focus {
   margin: auto;
   padding: 20px;
   position: relative; /* For absolute positioning of elements inside */
+  top: 20px;
 }
 
 .recipe-upload-form form {

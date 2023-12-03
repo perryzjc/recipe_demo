@@ -2,11 +2,11 @@ import React from "react";
 import BackgroundPattern from "../components/BackgroundPattern/BackgroundPattern";
 import RecipeUploadForm from "../components/RecipeUpload";
 
-const UserPage = ({user}) => {
+const UserPage = ({user, setContents}) => {
     return (
         <>
             <BackgroundPattern>
-                <RecipeUploadForm user={user} />
+                <RecipeUploadForm user={user} setContents={setContents}/>
             </BackgroundPattern>
         </>
     );

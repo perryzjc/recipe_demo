@@ -7,47 +7,98 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import ImportBox from './ImportBox.jsx'
+import MsgBox from './MsgBox.jsx';
+import getContents from "../../utils/getContent.js";
 
 
 
-function RecipeUploadForm({user}) {
-    const [userEmail, setUserEmail] = useState(user.email);
+function RecipeUploadForm({user, setContents}) {
     const [title, setTitle] = useState('');
     const [category, setCategory] = useState('');
     const [instructions, setInstructions] = useState("");
     const [image, setImage] = useState(null);
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen: msgIsOpen, onOpen: msgOnOpen, onClose: msgOnClose } = useDisclosure();
+    const { isOpen: errorIsOpen, onOpen: errorOnOpen, onClose: errorOnClose } = useDisclosure();
 
     function handleConfirm(imgPath) {
         setImage(imgPath);
     }
 
+    function clearAll() {
+        setTitle('');
+        setCategory('');
+        setInstructions('');
+        setImage(null);
+    }
+
+    function reloadContents() {
+        async function fetchData() {
+            console.log("Loading data...");
+            const data = await getContents();
+            console.log(data);
+            if (data instanceof Uint8Array) {
+              // Convert Uint8Array to regular array
+              setContents(Array.from(data));
+            } else {
+              setContents(data);
+            }
+          }
+      
+          fetchData().then(() => {
+            console.log("[Reload] Data loaded successfully!!!");
+          });
+    }
+
     async function handleSubmit(event) {
+        
         event.preventDefault();
 
         if (!image) {
             alert('Please upload an image first')
             return;
         }
-        // if (!userEmail) {
-        //     alert('Please login to your email first');
-        //     return;
-        // }
+        if (!user || !user.email) {
+            alert('Please login to your email first');
+            return;
+        }
+
+        // check user permission
+        try {
+            console.log(user.email)
+            const response = await fetch(import.meta.env.VITE_APP_API_URL + "/users/check", {
+              method: "Post",
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: user.email }), // No headers here as browser will set the correct 'Content-Type' for FormData
+            });
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const responseData = await response.json();
+            console.log("User Permission:", responseData);
+            if (!responseData["isAllow"]) {
+                errorOnOpen();
+                clearAll();
+                return;
+            }
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
 
         // clean instructions text into a list of strings by \n. Clean out empty strings
         const instructionsList = instructions.split('\n').filter((item) => item !== '');
         console.log('instructionsList', instructionsList)
 
         const formData = new FormData();
-        formData.append('email', userEmail);
+        formData.append('email', user.email);
         formData.append('title', title);
         formData.append('category', category);
         formData.append('instructions', JSON.stringify(instructionsList));
         formData.append('imagePath', image);
-        console.log('formData here 123456', formData);
+        console.log('Submit Form: ', formData);
 
         try {
-            const response = await fetch('http://localhost:3000/api/recipes', {
+            const response = await fetch(import.meta.env.VITE_APP_API_URL + '/recipes', {
                 method: 'POST',
                 body: formData // No headers here as browser will set the correct 'Content-Type' for FormData
             });
@@ -58,12 +109,14 @@ function RecipeUploadForm({user}) {
 
             const responseData = await response.json();
             console.log('Upload successful', responseData);
+            msgOnOpen();
+            clearAll();
+            reloadContents();
         } catch (error) {
             console.error('Error:', error.message);
         }
     }
 
-    //<input type="file" name="myfile" onChange={handleFileChange}/>
     return (
         <div className="recipe-upload-form">
             <div className="upload-label">Import Your Recipe</div>
@@ -117,6 +170,18 @@ function RecipeUploadForm({user}) {
                 />
 
                 <button type="submit">Submit</button>
+                <Modal blockScrollOnMount={false} isOpen={msgIsOpen} onClose={msgOnClose}>
+                    <ModalOverlay />
+                    <ModalContent bg="none" boxShadow="none">
+                        <MsgBox onClose = {msgOnClose} msg="Successfully Uploaded your Recipe! 😋" msgType="none"/>
+                    </ModalContent>
+                </Modal>
+                <Modal blockScrollOnMount={false} isOpen={errorIsOpen} onClose={errorOnClose}>
+                    <ModalOverlay />
+                    <ModalContent bg="none" boxShadow="none">
+                        <MsgBox onClose = {errorOnClose} msg="Sorry you don't have the permission to upload recipe. 🙁" msgType="error"/>
+                    </ModalContent>
+                </Modal>
             </form>
         </div>
     );

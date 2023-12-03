@@ -1,0 +1,74 @@
+/* src/UrlBox.css */
+.url-box {
+    background-color: RGB(73, 103, 170); /* Blue background color */
+    color: #fff; /* White text color */
+    width: 600px;
+    padding: 50px;
+    border-radius: 10px;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    top: 150px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.9;
+  }
+
+  .image-space{
+    height: 250px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+
+  .button-group{
+    display: inline;
+  }
+  
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    
+  }
+
+  .preview-button {
+    background-color: #1cbcce; /* Green button color */
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 280px;
+  }
+  
+  .confirm-button {
+    background-color: #2ecc71; /* Green button color */
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 280px;
+  }
+  
+  button:hover {
+    background-color: #27ae60; /* Darker green on hover */
+  }
+
+  .image-space img {
+    min-height: 250px;
+    align-self: center;
+}
+  

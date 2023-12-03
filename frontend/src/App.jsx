@@ -16,13 +16,13 @@ import getContents from "./utils/getContent.js";
 
 function App() {
   const [contents, setContents] = useState([]);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [firstVisit, setFirstVisit] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getContents();
       console.log("Loading data...");
+      const data = await getContents();
       console.log(data);
       if (data instanceof Uint8Array) {
         // Convert Uint8Array to regular array
@@ -33,7 +33,7 @@ function App() {
     }
 
     fetchData().then(() => {
-      console.log("Data loaded successfully kjasfkjaskfjaskjfkasjfkasjfka");
+      console.log("[Inital] Data loaded successfully!!!");
     });
   }, []);
 
@@ -66,7 +66,7 @@ function App() {
               <Route path="/soup" element={<Soup contents={contents} />} />
               <Route path="/dessert" element={<Dessert contents={contents} />} />
               <Route path="/recipe/:id" element={<Recipe contents={contents} />} />
-              <Route path="/upload" element={<UserPage user={user} />} />
+              <Route path="/upload" element={<UserPage user={user} setContents={setContents}/>} />
             </Routes>
           </div>
         </Router>

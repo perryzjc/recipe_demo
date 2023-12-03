@@ -5,12 +5,12 @@ import "./Navbar.css";
 import recipeIcon from "/assets/logo.png";
 import LoginButton from "./loginButton";
 import SearchBox from "../SearchBox/SearchBox";
-import { loadData } from "../../pages/Contents";
+//import { loadData } from "../../pages/Contents";
 
 function Navbar({ contents, user, setUser }) {
-  loadData().then(() => {
+  /*loadData().then(() => {
     console.log("Data loaded successfully");
-  });
+  });*/
 
   const linkVariants = {
     hover: { scale: 1.05, originX: 0, color: "#ffffff" },

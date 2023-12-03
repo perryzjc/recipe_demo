@@ -1,5 +1,5 @@
 function getContents() {
-    return fetch("http://localhost:3000/api/recipes", {
+    return fetch(import.meta.env.VITE_APP_API_URL + "/recipes", {
         method: "get"
     })
         .then(response => {
@@ -9,7 +9,7 @@ function getContents() {
             return response.json();
         })
         .then(jsonData => {
-            console.log("test123123123123123123123")
+            console.log("Successfully getContents from backend!")
             console.log(jsonData)
             // Transform the data to match the structure in contents.jsx
             const transformedData = jsonData.map(item => {
@@ -24,8 +24,8 @@ function getContents() {
                     // Add other fields as necessary
                 };
             });
-            console.log("I am transformed data")
-            console.log(transformedData);
+            console.log("Successfully transform contents!")
+            //console.log(transformedData);
             return transformedData;
         })
         .catch(error => {
