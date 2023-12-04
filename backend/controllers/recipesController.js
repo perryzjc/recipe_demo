@@ -3,7 +3,7 @@ const contents = require('../controllers/mockContents')
 const client = require('../config/db'); // Import the MongoDB client
 
 const getRecipes = async (req, res) => {
-  console.log("Test get in");
+  console.log("In getRecipes API");
     try {
         const db = client.db("RecipeBlog");
         const recipes = await db.collection("recipes").find({}).toArray();

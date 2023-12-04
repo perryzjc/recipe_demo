@@ -32,8 +32,7 @@ exports.getByGmail = async (req, res) => {
         const { email } = req.body; // Assuming email is passed as a query parameter
         const db = client.db("RecipeBlog"); // Using "RecipeBlog" as the database name
         const usersCollection = db.collection("users");
-        console.log(req);
-        console.log(`Request Email: ${email}`);
+        console.log(`[Check email] Request Email: ${email}`);
 
         const user = await usersCollection.findOne({ userEmail: email });
         console.log(`User: ${JSON.stringify(user)}`);

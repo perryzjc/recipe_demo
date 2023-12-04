@@ -4,8 +4,8 @@ import RecipeListsDashBoardTemplate from "../components/RecipeDashboard/RecipeLi
 const category = "Appetizer";
 
 function Appetizer(contents) {
-  console.log("i am appetizer 12345678901011121314151617181920")
-  console.log(contents)
+  //console.log("i am appetizer 12345678901011121314151617181920")
+  //console.log(contents)
   const appetizers = contents["contents"].filter(item => item.category === category);
   return (
     <RecipeListsDashBoardTemplate

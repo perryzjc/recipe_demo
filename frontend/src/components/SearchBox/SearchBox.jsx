@@ -25,12 +25,12 @@ function SearchBox(contents) {
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
-    console.log(string, results)
+    //console.log(string, results)
   }
   
   const handleOnHover = (result) => {
     // the item hovered
-    console.log(result)
+    //console.log(result)
   }
   
   const handleOnSelect = (item) => {
@@ -41,7 +41,7 @@ function SearchBox(contents) {
   }
   
   const handleOnFocus = () => {
-    console.log('Focused')
+    //console.log('Focused')
   }
 
   // console.log("test contents")
@@ -51,8 +51,8 @@ function SearchBox(contents) {
   
   const formatResult = (item) => {
     // change the item.name below to title search
-    console.log("test item")
-    console.log(item)
+    console.log("Format item: ", item);
+    //console.log(item)
     return (
       <>
         <span className='search-result'>

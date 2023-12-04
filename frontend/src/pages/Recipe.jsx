@@ -7,14 +7,14 @@ import {resolveImagePath} from "../utils/resolveImagePath.js";
 
 function Recipe(contents) {
   const { id, image } = useParams();
-  console.log("test id");
+  //console.log("test id");
   const selectedRecipe = contents.contents.find((recipe) => recipe.id === id);
 
   if (!selectedRecipe) {
     return <div>Recipe not found</div>;
   }
-  console.log("test selectedRecipe");
-  console.log(contents)
+  console.log("Selected Recipe: ", selectedRecipe);
+  //console.log(contents)
   return (
     <RecipeInstruction
         recipeName={selectedRecipe.title}

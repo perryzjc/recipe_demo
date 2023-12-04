@@ -23,7 +23,7 @@ function LoginButton({user, setUser}) {
     if (initalU) {
       console.log("Login Success");
       console.log(initalU);
-      console.log(initalU.access_token);
+      //console.log(initalU.access_token);
       axios
         .get(
           `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${initalU.access_token}`,

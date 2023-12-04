@@ -15,7 +15,7 @@ const ImportBox = ({ onClose, onConfirm }) => {
     // You can perform additional validation or processing here
     if (image !== null && image !== "") {
         // You can perform additional validation or processing here
-        console.log('Image:', image);
+        console.log('Imported Image:', image);
         onConfirm(image);
         onClose();
       } else {

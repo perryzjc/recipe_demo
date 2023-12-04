@@ -9,7 +9,7 @@ function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundIm
     backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${resolveImagePath(backgroundImage)})`,
   };
 
-  console.log("something is here")
+  console.log("Category: ", category);
   console.log(recipe_info_list);
 
   return (
