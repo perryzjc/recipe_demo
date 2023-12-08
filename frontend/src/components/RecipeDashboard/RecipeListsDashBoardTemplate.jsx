@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import "./RecipeListsDashBoardTemplate.css";
 import {resolveImagePath} from "../../utils/resolveImagePath";
+// import pic from "../../../public/assets/bg/CatBack"
 
 function RecipeListsDashBoardTemplate({ recipe_info_list, category, backgroundImage }) {
   const backgroundStyle = {
-    backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${resolveImagePath(backgroundImage)})`,
+    // backgroundImage: `linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(${"../../../../frontend/public/assets/bg/CatBack.jpg"})`,
   };
 
   console.log("Category: ", category);

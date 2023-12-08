@@ -5,12 +5,12 @@
   flex-direction: column;
   align-items: center;  /* Center the content horizontally */
   justify-content: flex-start; /* Align children to the start of the container */
-  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7));
   background-size: cover; /* Cover the entire viewport */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Do not repeat the background image */
   width: 100vw;
   height: 100vh;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url("../../../../frontend/public/assets/bg/CatBack.jpg");
 }
 
 h2 {
